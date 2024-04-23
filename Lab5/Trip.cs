@@ -11,11 +11,11 @@ Models:
 Traveler(name,contactDetails,preferences) DONE
 reviews(rating,Traveler) DONE
 
-trip(traveler,date,activities,accomedations,destination,additionalCost) 
+trip(traveler,date,activities,accomedations,destination,additionalCost) DONE
 destination(name,location,cost) DONE
 
-Controllers:
-travellerController
+Controllers: - error handling to all queries, 
+travellerController 
 tripController
 Travel Management Application:
 An application to help create, organize, and manage trips 
@@ -42,6 +42,23 @@ namespace Lab5
         string accomedations;
         string destination;
         float additionalCost;
+        public Trip(int idNumber,string dateMade, string activities, string accomendations, string destination, float additionalCost)
+        {
+            this.idNumber = idNumber;
+            this.dateMade = dateMade;
+            this.activities = activities;
+            this.accomedations = accomendations;
+            this.destination = destination;
+            this.additionalCost = additionalCost;
+        }
+        public int getID()
+        {
+            return this.idNumber;
+        }
+        public string getDateMade()
+        {
+            return this.dateMade;
+        }
         public void saveTrip()
         {
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
@@ -85,7 +102,7 @@ namespace Lab5
             reader.Close();
             myConnection.Close();
         }
-        public void deleteDestination(int name)
+        public void deleteTrip(int name)
         {
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
@@ -99,11 +116,11 @@ namespace Lab5
             cmd.ExecuteNonQuery();
             myConnection.Close();
         }
-        public void updateDestination()
+        public void updateTrip()
         {
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
-            String query = "UPDATE reviews SET " +
+            String query = "UPDATE trips SET " +
               "[dateMade] = @dateMade, " +
               "[activities] = @activities, " +
               "[accomedations] = @accomedations, " +
@@ -139,5 +156,35 @@ namespace Lab5
             reader.Close();
             return result + 1;
         }
+
+        //All the setter methods
+            public void setIdNumber(int idNumber)
+            {
+                this.idNumber = idNumber;
+            }
+
+            public void setDateMade(string dateMade)
+            {
+                this.dateMade = dateMade;
+            }
+
+            public void setActivities(string activities)
+            {
+                this.activities = activities;
+            }
+
+            public void setaccomedations(string accomedations)
+            {
+                this.accomedations = accomedations;
+            }
+            public void setDestination(string destination)
+            {
+                this.destination = destination;
+            }
+            public void setAdditionalCost(float additionalCost)
+            {
+                this.additionalCost = additionalCost;
+            }
     }
 }
+

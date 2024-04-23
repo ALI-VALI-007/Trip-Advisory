@@ -58,6 +58,14 @@ namespace Lab5
         {
             return this.nameTraveler;
         }
+        public string getPassword()
+        {
+            return this.password;
+        }
+        public string getPreferences()
+        {
+            return this.preferences;
+        }
         public void saveTraveler()
         {
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
@@ -133,6 +141,22 @@ namespace Lab5
             //execute
             cmd.ExecuteNonQuery();
             myConnection.Close();
+        }
+        public void setTravelerName(string nameTraveler)
+        {
+            this.nameTraveler = nameTraveler;
+        }
+        public void setContactDetails(string contactDetails)
+        {
+            this.contactDetails = contactDetails;
+        }
+        public void setPreferences(string preferences)
+        {
+            this.preferences = preferences;
+        }
+        public void setPassword(string password)
+        {
+            this.password = password;
         }
     }
 }

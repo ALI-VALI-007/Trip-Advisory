@@ -43,6 +43,10 @@ namespace Lab5
             this.rating = rating;
             this.comments = comments;
         }
+        public int getRating() 
+        {
+            return rating; 
+        }
         public void saveReview()
         {
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");

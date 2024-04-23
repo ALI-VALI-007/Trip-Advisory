@@ -10,7 +10,7 @@ Models:
 Traveler(name,contactDetails,preferences) DONE
 reviews(rating,Traveler) DONE
 
-trip(traveler,date,activities,accomedations,destination,additionalCost) 
+trip(traveler,date,activities,accomedations,destination,additionalCost)  
 destination(name,location,cost) DONE
 
 Controllers:
@@ -41,6 +41,10 @@ namespace Lab5
             this.destinationName = destinationName;
             this.location = location;
             this.cost = cost;
+        }
+        public string getLocation()
+        {
+            return this.location;
         }
         public void saveDestination()
         {
@@ -111,6 +115,20 @@ namespace Lab5
             //execute
             cmd.ExecuteNonQuery();
             myConnection.Close();
+        }
+
+        //setters
+        public void setCost(float cost)
+        {
+            this.cost = cost;
+        }
+        public void setLocation(string location)
+        {
+            this.location = location;
+        }
+        public void setDestinationName(string destinationName)
+        {
+            this.destinationName=destinationName;
         }
     }
 }

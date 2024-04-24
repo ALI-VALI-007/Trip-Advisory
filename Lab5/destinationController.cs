@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,13 +14,13 @@ namespace Lab5
         {//you can add stuff, i wouldnt
 
         }
-        public bool validDestinationSave(string destinationName, string location, string cost) { 
+        public bool validDestinationSave(string destinationName, string location, string cost, string URL) { 
             float costFloat = checkIfFloat(cost);
             if (costFloat == -1.0f || validDestinationLoad(destinationName))
             {
                 return false;
             }
-            curDestinaton = new Destination(destinationName, location, costFloat);
+            curDestinaton = new Destination(destinationName, location, costFloat, URL);
             curDestinaton.saveDestination();
             return true;
         }
@@ -43,7 +44,7 @@ namespace Lab5
             }
             return false;
         }
-        public bool validDestinationUpdate(string destinationName, string location, string cost)
+        public bool validDestinationUpdate(string destinationName, string location, string cost, string URL)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
             float costFloat = checkIfFloat(cost);
             if (costFloat == -1.0f || validDestinationLoad(destinationName))
@@ -53,6 +54,7 @@ namespace Lab5
             curDestinaton.setDestinationName(destinationName);
             curDestinaton.setLocation(location);
             curDestinaton.setCost(costFloat);
+            curDestinaton.setURL(URL);
             curDestinaton.updateDestination();
             return true;
         }

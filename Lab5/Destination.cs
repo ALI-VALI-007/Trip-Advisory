@@ -27,6 +27,9 @@ A form for travelers to leave reviews.
 A form for cost estimations of the trip.
 A form for creating reviews of destinations
 A form for searching for reviews of a destination 
+
+
+ADD PICTURE URL
  */
 
 namespace Lab5
@@ -37,10 +40,12 @@ namespace Lab5
         string destinationName;
         string location;
         float cost;
-        public Destination(string destinationName, string location, float cost) {
+        string URL;
+        public Destination(string destinationName, string location, float cost, string URL) {
             this.destinationName = destinationName;
             this.location = location;
             this.cost = cost;
+            this.URL = URL;
         }
         public string getString()
         {
@@ -55,13 +60,14 @@ namespace Lab5
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
 
-            String query = "INSERT INTO destinations ([destinationName], [location], [cost]) " +
-                           "VALUES (@destinationName, @location, @cost)";
+            String query = "INSERT INTO destinations ([destinationName], [location], [cost], [URL]) " +
+                           "VALUES (@destinationName, @location, @cost, @URL)";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
             cmd.Parameters.AddWithValue("@destinationName", this.destinationName);
             cmd.Parameters.AddWithValue("@location", this.location);
             cmd.Parameters.AddWithValue("@cost", this.cost);
+            cmd.Parameters.AddWithValue("@URL", this.URL);
 
             cmd.ExecuteNonQuery();
             myConnection.Close();
@@ -83,6 +89,7 @@ namespace Lab5
             {
                 this.location = reader.GetString(reader.GetOrdinal("location"));
                 this.cost = reader.GetFloat(reader.GetOrdinal("cost"));
+                this.URL= reader.GetString(reader.GetOrdinal("URL"));
             }
             reader.Close();
             myConnection.Close();
@@ -108,12 +115,14 @@ namespace Lab5
             String query = "UPDATE destinations SET " +
               "[cost] = @cost, " +
               "[location] = @comments, " +
+              "[URL] = @URL, "+
               "WHERE [destinationName] = @destinationName";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
             // Add parameters with values
             cmd.Parameters.AddWithValue("@cost", this.cost);
             cmd.Parameters.AddWithValue("@location", this.location);
+            cmd.Parameters.AddWithValue("@URL", this.URL);
             cmd.Parameters.AddWithValue("@destinationName", this.destinationName);
 
             //execute
@@ -134,6 +143,10 @@ namespace Lab5
         {
             this.destinationName=destinationName;
         }
+        public void setURL(string url)
+        {
+            this.URL = url;
+        }
 
         public List<Destination> loadAllDestinations()
         {
@@ -151,7 +164,8 @@ namespace Lab5
                 this.destinationName = reader.GetString(reader.GetOrdinal("destinationName"));
                 this.location = reader.GetString(reader.GetOrdinal("location"));
                 this.cost = reader.GetFloat(reader.GetOrdinal("cost"));
-                Destination newDestination = new Destination(destinationName, location, cost);
+                this.URL = reader.GetString(reader.GetOrdinal("URL"));
+                Destination newDestination = new Destination(destinationName, location, cost, URL);
                 list.Add(newDestination);
             }
             reader.Close();

@@ -11,7 +11,7 @@ namespace Lab5
         Reviews curReview;
         public reviewsController()
         {//you can add stuff, i wouldnt
-
+            curReview = null;
         }
         public bool validReviewSave(string travelerName, string ratingStr, string comments)
         {

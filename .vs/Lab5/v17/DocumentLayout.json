@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\12674\\lab5\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|c:\\users\\12674\\lab5\\lab5\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|solutionrelative:lab5\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|c:\\users\\12674\\lab5\\lab5\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|solutionrelative:lab5\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|c:\\users\\12674\\lab5\\lab5\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|solutionrelative:lab5\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,14 +26,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\12674\\lab5\\Lab5\\Form1.cs",
-              "RelativeDocumentMoniker": "Lab5\\Form1.cs",
-              "ToolTip": "C:\\Users\\12674\\lab5\\Lab5\\Form1.cs [Design]",
-              "RelativeToolTip": "Lab5\\Form1.cs [Design]",
+              "DocumentIndex": 1,
+              "Title": "frmLogin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\12674\\lab5\\Lab5\\frmLogin.cs",
+              "RelativeDocumentMoniker": "Lab5\\frmLogin.cs",
+              "ToolTip": "C:\\Users\\12674\\lab5\\Lab5\\frmLogin.cs [Design]",
+              "RelativeToolTip": "Lab5\\frmLogin.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T04:50:12.246Z",
+              "WhenOpened": "2024-04-24T09:18:15.412Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmHome.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\12674\\lab5\\Lab5\\frmHome.cs",
+              "RelativeDocumentMoniker": "Lab5\\frmHome.cs",
+              "ToolTip": "C:\\Users\\12674\\lab5\\Lab5\\frmHome.cs [Design]",
+              "RelativeToolTip": "Lab5\\frmHome.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T09:17:31.387Z",
               "EditorCaption": " [Design]"
             }
           ]

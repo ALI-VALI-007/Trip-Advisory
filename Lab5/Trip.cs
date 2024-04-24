@@ -35,14 +35,14 @@ namespace Lab5
     public class Trip
     {
         OleDbConnection myConnection;
-        Traveler traveler;
+        string tName;
         int idNumber;
         string dateMade;
         string activities;
         string accomedations;
         string destination;
         float additionalCost;
-        public Trip(int idNumber,string dateMade, string activities, string accomendations, string destination, float additionalCost)
+        public Trip(int idNumber,string dateMade, string activities, string accomendations, string destination, float additionalCost, string tName)
         {
             this.idNumber = idNumber;
             this.dateMade = dateMade;
@@ -50,10 +50,11 @@ namespace Lab5
             this.accomedations = accomendations;
             this.destination = destination;
             this.additionalCost = additionalCost;
+            this.tName = tName;
         }
         public string getString()
         {
-            return this.idNumber.ToString() +","+ this.dateMade +","+ this.activities +","+ this.accomedations +","+ this.destination +","+ this.additionalCost.ToString();
+            return this.idNumber.ToString() +","+ this.dateMade +","+ this.activities +","+ this.accomedations +","+ this.destination +","+ this.additionalCost.ToString() + this.tName;
         }
         public int getID()
         {
@@ -68,8 +69,8 @@ namespace Lab5
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
 
-            String query = "INSERT INTO trips ([idNumber], [dateMade], [activities], [accomedations], [destination], [additionalCost]) " +
-                           "VALUES (@idNumber, @dateMade, @activities, @accomedations, @destination, @additionalCost)";
+            String query = "INSERT INTO trips ([idNumber], [dateMade], [activities], [accomedations], [destination], [additionalCost], [tName]) " +
+                           "VALUES (@idNumber, @dateMade, @activities, @accomedations, @destination, @additionalCost, @tName)";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
             this.idNumber = findTripID();
             cmd.Parameters.AddWithValue("@idNumber", this.idNumber);
@@ -78,6 +79,7 @@ namespace Lab5
             cmd.Parameters.AddWithValue("@accomedations", this.accomedations);
             cmd.Parameters.AddWithValue("@destination", this.destination);
             cmd.Parameters.AddWithValue("@additionalCost", this.additionalCost);
+            cmd.Parameters.AddWithValue("@tName", this.tName);
 
             cmd.ExecuteNonQuery();
             myConnection.Close();
@@ -130,6 +132,7 @@ namespace Lab5
               "[accomedations] = @accomedations, " +
               "[destination] = @destination, " +
               "[additionalCost] = @additionalCost, " +
+              "[tName] = @tName, " +
               "WHERE [idNumber] = @idNumber";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
@@ -139,6 +142,7 @@ namespace Lab5
             cmd.Parameters.AddWithValue("@destination", this.destination);
             cmd.Parameters.AddWithValue("@additionalCost", this.additionalCost);
             cmd.Parameters.AddWithValue("@idNumber", this.idNumber);
+            cmd.Parameters.AddWithValue("@tName", this.tName);
 
             //execute
             cmd.ExecuteNonQuery();

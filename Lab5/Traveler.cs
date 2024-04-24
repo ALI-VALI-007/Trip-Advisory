@@ -5,6 +5,7 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 /*
@@ -93,7 +94,7 @@ namespace Lab5
             this.nameTraveler = nameSearch;
             string query = "SELECT * " +
               "FROM traveler " +
-              "WHERE [name] = @name";
+              "WHERE [nameTraveler] = @nameTraveler";
 
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
@@ -106,7 +107,8 @@ namespace Lab5
                 this.nameTraveler = reader.GetString(reader.GetOrdinal("nameTraveler"));
                 this.contactDetails = reader.GetString(reader.GetOrdinal("contactDetails"));
                 this.preferences = reader.GetString(reader.GetOrdinal("preferences"));
-                this.preferences = reader.GetString(reader.GetOrdinal("password"));
+                this.password = reader.GetString(reader.GetOrdinal("password"));
+                //MessageBox.Show(this.password);
             }
             reader.Close();
             myConnection.Close();

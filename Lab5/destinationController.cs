@@ -12,7 +12,7 @@ namespace Lab5
         Destination curDestinaton;
         public destinationController()
         {//you can add stuff, i wouldnt
-
+            curDestinaton = null;
         }
         public bool validDestinationSave(string destinationName, string location, string cost, string URL) { 
             float costFloat = checkIfFloat(cost);

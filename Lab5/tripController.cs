@@ -11,9 +11,9 @@ namespace Lab5
         Trip curTrip;
         public tripController()
         {//you can add stuff, i wouldnt
-
+            curTrip = null;
         }
-        public bool validTripSave(string idNumber, string dateMade, string activities, string accomendations, string destination, string additionalCost)
+        public bool validTripSave(string idNumber, string dateMade, string activities, string accomendations, string destination, string additionalCost, string tName)
         {
             int tripIdInt = checkIfInt(idNumber);
             float additionalCostFloat = checkIfFloat(additionalCost);
@@ -21,7 +21,7 @@ namespace Lab5
             {
                 return false;
             }
-            curTrip = new Trip(tripIdInt,dateMade, activities,accomendations,destination,additionalCostFloat);
+            curTrip = new Trip(tripIdInt,dateMade, activities,accomendations,destination,additionalCostFloat, tName);
             curTrip.saveTrip();
             return true;
         }

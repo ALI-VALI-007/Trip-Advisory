@@ -65,6 +65,12 @@
   <ItemGroup>
     <Compile Include="Destination.cs" />
     <Compile Include="destinationController.cs" />
+    <Compile Include="frmDestination.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDestination.Designer.cs">
+      <DependentUpon>frmDestination.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     <Compile Include="travelerController.cs" />
     <Compile Include="Trip.cs" />
     <Compile Include="tripController.cs" />
+    <EmbeddedResource Include="frmDestination.resx">
+      <DependentUpon>frmDestination.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>

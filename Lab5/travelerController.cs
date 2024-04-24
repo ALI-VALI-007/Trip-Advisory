@@ -12,15 +12,14 @@ namespace Lab5
         Traveler curTraveler;
         public travelerController()
         {//you can add stuff, i wouldnt
-            curTraveler = new Traveler("Temp","Temp","Temp","Temp");
+            curTraveler = new Traveler("","","","");
         }
         public bool validTravelerSave(string nameTraveler, string contactDetails, string preferences, string password)
         {
             if (validTravelerLoad(nameTraveler) || checkIfInt(password)!=-1 )
             {
-                MessageBox.Show(checkIfInt(password).ToString());
-                MessageBox.Show(validTravelerLoad(nameTraveler).ToString());
-
+                //MessageBox.Show(checkIfInt(password).ToString());
+                //MessageBox.Show(validTravelerLoad(nameTraveler).ToString());
                 return false;
             }
             curTraveler = new Traveler(nameTraveler, contactDetails, preferences, password);

@@ -20,7 +20,6 @@ namespace Lab5
         {
             InitializeComponent();
         }
-
         private void frmLogin_Load(object sender, EventArgs e)
         {
             pnlLogin.Visible = true;

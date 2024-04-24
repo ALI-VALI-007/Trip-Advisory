@@ -51,6 +51,10 @@ namespace Lab5
             this.destination = destination;
             this.additionalCost = additionalCost;
         }
+        public string getString()
+        {
+            return this.idNumber.ToString() +","+ this.dateMade +","+ this.activities +","+ this.accomedations +","+ this.destination +","+ this.additionalCost.ToString();
+        }
         public int getID()
         {
             return this.idNumber;

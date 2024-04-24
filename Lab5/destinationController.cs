@@ -23,7 +23,6 @@ namespace Lab5
             curDestinaton.saveDestination();
             return true;
         }
-
         public bool validDestinationLoad(string destinationName) //Basically itll check if the textbox is valid int, then check if date is empty to see if the values loaded
         {
             curDestinaton.loadDestination(destinationName);
@@ -56,6 +55,17 @@ namespace Lab5
             curDestinaton.setCost(costFloat);
             curDestinaton.updateDestination();
             return true;
+        }
+        public List<string> getDestinationList()
+        {
+
+            List<Destination> destinationList= curDestinaton.loadAllDestinations();
+            List<string> result= new List<string>();
+            foreach (Destination loopDestination in destinationList)
+            {
+                result.Add(loopDestination.getString());
+            }
+            return result;
         }
         private float checkIfFloat(string floatCheck) // checks if float and has only hundredth place decimal
         {

@@ -47,6 +47,10 @@ namespace Lab5
         {
             return rating; 
         }
+        public string getString()
+        {
+            return this.traveler.getName() +","+ this.rating.ToString() +","+ this.comments;
+        }
         public void saveReview()
         {
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
@@ -117,6 +121,29 @@ namespace Lab5
             //execute
             cmd.ExecuteNonQuery();
             myConnection.Close();
+        }
+        public List<Reviews> loadAllReviews()
+        {
+            List<Reviews> list = new List<Reviews>();
+            string query = "SELECT * " +
+              "FROM reviews ";
+
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection.Open();
+            OleDbCommand cmd = new OleDbCommand(query, myConnection);
+
+            OleDbDataReader reader = cmd.ExecuteReader();
+            foreach (var row in reader)
+            {
+                this.traveler.setTravelerName( reader.GetString(reader.GetOrdinal("travelerName")) );
+                this.rating = reader.GetInt32(reader.GetOrdinal("rating"));
+                this.comments = reader.GetString(reader.GetOrdinal("comments"));
+                Reviews newReview = new Reviews(traveler, rating, comments);
+                list.Add(newReview);
+            }
+            reader.Close();
+            myConnection.Close();
+            return list;
         }
     }
 }

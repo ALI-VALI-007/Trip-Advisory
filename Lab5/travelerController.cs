@@ -76,5 +76,15 @@ namespace Lab5
             }
             return false;
         }
+        public List<string> getTravelerList()
+        {
+            List<Traveler> travelerList = curTraveler.loadAllTravelers();
+            List<string> result = new List<string>();
+            foreach (Traveler loopTraveler in travelerList)
+            {
+                result.Add(loopTraveler.getString());
+            }
+            return result;
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 /*
 
@@ -53,6 +54,10 @@ namespace Lab5
             this.contactDetails = contactDetails;
             this.preferences = preferences;
             this.password = password;
+        }
+        public string getString()
+        {
+            return this.nameTraveler + "," + this.contactDetails + "," + this.preferences;
         }
         public string getName()
         {
@@ -105,7 +110,6 @@ namespace Lab5
             }
             reader.Close();
             myConnection.Close();
-
         }
         public void deleteTraveler(string nameTraveler)
         {
@@ -157,6 +161,31 @@ namespace Lab5
         public void setPassword(string password)
         {
             this.password = password;
+        }
+        public List<Traveler> loadAllTravelers()
+        {
+            List<Traveler> list = new List<Traveler>();
+            string query = "SELECT * " +
+              "FROM traveler ";
+
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection.Open();
+            OleDbCommand cmd = new OleDbCommand(query, myConnection);
+
+            OleDbDataReader reader = cmd.ExecuteReader();
+            foreach (var row in reader)
+            {
+                this.nameTraveler = reader.GetString(reader.GetOrdinal("nameTraveler"));
+                this.contactDetails = reader.GetString(reader.GetOrdinal("contactDetails"));
+                this.preferences = reader.GetString(reader.GetOrdinal("preferences"));
+                this.password = reader.GetString(reader.GetOrdinal("password"));
+
+                Traveler newTraveler = new Traveler(nameTraveler, contactDetails, preferences, password);
+                list.Add(newTraveler);
+            }
+            reader.Close();
+            myConnection.Close();
+            return list;
         }
     }
 }

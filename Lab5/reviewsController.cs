@@ -81,6 +81,15 @@ namespace Lab5
             }
             return true;
         }
-
+        public List<string> getReviewsList()
+        {
+            List<Reviews> reviewList= curReview.loadAllReviews();
+            List<string> result = new List<string>();
+            foreach(Reviews loopReview in reviewList)
+            {
+                result.Add(loopReview.getString());
+            }
+            return result;
+        }
     }
 }

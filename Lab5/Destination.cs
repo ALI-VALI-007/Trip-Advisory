@@ -42,6 +42,10 @@ namespace Lab5
             this.location = location;
             this.cost = cost;
         }
+        public string getString()
+        {
+            return this.destinationName + "," + this.location + "," + this.cost.ToString();
+        }
         public string getLocation()
         {
             return this.location;
@@ -87,7 +91,7 @@ namespace Lab5
         {
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
-            String query = "DELETE FROM reviews WHERE [destinationName] = @destinationName";
+            String query = "DELETE FROM destinations WHERE [destinationName] = @destinationName";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
             // Add parameters with values
@@ -101,7 +105,7 @@ namespace Lab5
         {
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
-            String query = "UPDATE reviews SET " +
+            String query = "UPDATE destinations SET " +
               "[cost] = @cost, " +
               "[location] = @comments, " +
               "WHERE [destinationName] = @destinationName";
@@ -129,6 +133,30 @@ namespace Lab5
         public void setDestinationName(string destinationName)
         {
             this.destinationName=destinationName;
+        }
+
+        public List<Destination> loadAllDestinations()
+        {
+            List<Destination> list = new List<Destination>();
+            string query = "SELECT * " +
+              "FROM destinations ";
+
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection.Open();
+            OleDbCommand cmd = new OleDbCommand(query, myConnection);
+
+            OleDbDataReader reader = cmd.ExecuteReader();
+            foreach (var row in reader)
+            {
+                this.destinationName = reader.GetString(reader.GetOrdinal("destinationName"));
+                this.location = reader.GetString(reader.GetOrdinal("location"));
+                this.cost = reader.GetFloat(reader.GetOrdinal("cost"));
+                Destination newDestination = new Destination(destinationName, location, cost);
+                list.Add(newDestination);
+            }
+            reader.Close();
+            myConnection.Close();
+            return list;
         }
     }
 }

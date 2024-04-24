@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.OleDb;
 using System.Linq;
@@ -39,13 +40,21 @@ namespace Lab5
         OleDbConnection myConnection;
         string destinationName;
         string location;
-        float cost;
+        double cost;
         string URL;
-        public Destination(string destinationName, string location, float cost, string URL) {
+        public Destination(string destinationName, string location, double cost, string URL) {
             this.destinationName = destinationName;
             this.location = location;
             this.cost = cost;
             this.URL = URL;
+        }
+        public string getName()
+        {
+            return this.destinationName;
+        }
+        public string getURL()
+        {
+            return this.URL;
         }
         public string getString()
         {
@@ -88,7 +97,7 @@ namespace Lab5
             while (reader.Read())
             {
                 this.location = reader.GetString(reader.GetOrdinal("location"));
-                this.cost = reader.GetFloat(reader.GetOrdinal("cost"));
+                this.cost = convertToDouble(reader.GetDecimal(reader.GetOrdinal("cost")));
                 this.URL= reader.GetString(reader.GetOrdinal("URL"));
             }
             reader.Close();
@@ -131,7 +140,7 @@ namespace Lab5
         }
 
         //setters
-        public void setCost(float cost)
+        public void setCost(Double cost)
         {
             this.cost = cost;
         }
@@ -163,7 +172,7 @@ namespace Lab5
             {
                 this.destinationName = reader.GetString(reader.GetOrdinal("destinationName"));
                 this.location = reader.GetString(reader.GetOrdinal("location"));
-                this.cost = reader.GetFloat(reader.GetOrdinal("cost"));
+                this.cost = convertToDouble(reader.GetDecimal(reader.GetOrdinal("cost")));
                 this.URL = reader.GetString(reader.GetOrdinal("URL"));
                 Destination newDestination = new Destination(destinationName, location, cost, URL);
                 list.Add(newDestination);
@@ -171,6 +180,28 @@ namespace Lab5
             reader.Close();
             myConnection.Close();
             return list;
+        }
+        public DataTable loadDGV(string destinationName)
+        {
+
+            string query = "SELECT * " +
+                            "FROM  destinations " +
+                            "WHERE [destinationName] = @destinationName";
+
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection.Open();
+            OleDbCommand cmd = new OleDbCommand(query, myConnection);
+            cmd.Parameters.AddWithValue("@destinationName", destinationName);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            DataTable dataTable = new DataTable();
+            dataTable.Load(reader);
+            reader.Close();
+            myConnection.Close();
+            return dataTable;
+        }
+        private double convertToDouble(decimal value)
+        {
+            return (double)value;
         }
     }
 }

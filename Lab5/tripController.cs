@@ -54,7 +54,7 @@ namespace Lab5
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
             int tripIdInt = checkIfInt(idNumber);
             float additionalCostFloat = checkIfFloat(additionalCost);
-            if ( additionalCostFloat == -1.0f || tripIdInt == -1 || validTripLoad(idNumber) || destinationCheck(destination)==false )
+            if ( additionalCostFloat == -1.0f || tripIdInt == -1 || !validTripLoad(idNumber) || destinationCheck(destination)==false )
             {
                 return false;
             }

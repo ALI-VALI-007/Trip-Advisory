@@ -34,19 +34,21 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.pnlLogin = new System.Windows.Forms.Panel();
-            this.btnLogin = new System.Windows.Forms.Button();
             this.btnSignup = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.pnlSignup = new System.Windows.Forms.Panel();
-            this.pnlSettings = new System.Windows.Forms.Panel();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblPreferences = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtPreferences = new System.Windows.Forms.TextBox();
             this.btnCreateAcct = new System.Windows.Forms.Button();
             this.lblSignupName = new System.Windows.Forms.Label();
             this.lblSignupPassword = new System.Windows.Forms.Label();
             this.txtSignupName = new System.Windows.Forms.TextBox();
             this.txtSignupPassword = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblPreferences = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPreferences = new System.Windows.Forms.TextBox();
+            this.pnlSettings = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.lblSettingsEmail = new System.Windows.Forms.Label();
             this.lblSettingsPreferences = new System.Windows.Forms.Label();
             this.txtSettingsEmail = new System.Windows.Forms.TextBox();
@@ -54,8 +56,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.lblSettingsPassword = new System.Windows.Forms.Label();
             this.txtSettingsPassword = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lab5DBDataSet1)).BeginInit();
             this.pnlLogin.SuspendLayout();
             this.pnlSignup.SuspendLayout();
@@ -112,16 +112,6 @@
             this.pnlLogin.Size = new System.Drawing.Size(200, 269);
             this.pnlLogin.TabIndex = 4;
             // 
-            // btnLogin
-            // 
-            this.btnLogin.Location = new System.Drawing.Point(56, 142);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 34);
-            this.btnLogin.TabIndex = 5;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
             // btnSignup
             // 
             this.btnSignup.Location = new System.Drawing.Point(56, 182);
@@ -131,6 +121,16 @@
             this.btnSignup.Text = "Signup";
             this.btnSignup.UseVisualStyleBackColor = true;
             this.btnSignup.Click += new System.EventHandler(this.btnSignup_Click);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(56, 142);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(75, 34);
+            this.btnLogin.TabIndex = 5;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // pnlSignup
             // 
@@ -148,22 +148,38 @@
             this.pnlSignup.Size = new System.Drawing.Size(324, 266);
             this.pnlSignup.TabIndex = 7;
             // 
-            // pnlSettings
+            // lblEmail
             // 
-            this.pnlSettings.Controls.Add(this.btnHome);
-            this.pnlSettings.Controls.Add(this.btnDelete);
-            this.pnlSettings.Controls.Add(this.lblSettingsEmail);
-            this.pnlSettings.Controls.Add(this.lblSettingsPreferences);
-            this.pnlSettings.Controls.Add(this.txtSettingsEmail);
-            this.pnlSettings.Controls.Add(this.txtSettingsPreferences);
-            this.pnlSettings.Controls.Add(this.btnSave);
-            this.pnlSettings.Controls.Add(this.lblSettingsPassword);
-            this.pnlSettings.Controls.Add(this.txtSettingsPassword);
-            this.pnlSettings.Location = new System.Drawing.Point(49, 69);
-            this.pnlSettings.Name = "pnlSettings";
-            this.pnlSettings.Size = new System.Drawing.Size(704, 266);
-            this.pnlSettings.TabIndex = 8;
-            this.pnlSettings.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSettings_Paint);
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(136, 102);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(44, 16);
+            this.lblEmail.TabIndex = 15;
+            this.lblEmail.Text = "Email:";
+            // 
+            // lblPreferences
+            // 
+            this.lblPreferences.AutoSize = true;
+            this.lblPreferences.Location = new System.Drawing.Point(117, 146);
+            this.lblPreferences.Name = "lblPreferences";
+            this.lblPreferences.Size = new System.Drawing.Size(83, 16);
+            this.lblPreferences.TabIndex = 16;
+            this.lblPreferences.Text = "Preferences:";
+            this.lblPreferences.Click += new System.EventHandler(this.lblPreferences_Click);
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(112, 121);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(100, 22);
+            this.txtEmail.TabIndex = 13;
+            // 
+            // txtPreferences
+            // 
+            this.txtPreferences.Location = new System.Drawing.Point(3, 168);
+            this.txtPreferences.Name = "txtPreferences";
+            this.txtPreferences.Size = new System.Drawing.Size(318, 22);
+            this.txtPreferences.TabIndex = 14;
             // 
             // btnCreateAcct
             // 
@@ -207,38 +223,42 @@
             this.txtSignupPassword.Size = new System.Drawing.Size(100, 22);
             this.txtSignupPassword.TabIndex = 8;
             // 
-            // lblEmail
+            // pnlSettings
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(136, 102);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(44, 16);
-            this.lblEmail.TabIndex = 15;
-            this.lblEmail.Text = "Email:";
+            this.pnlSettings.Controls.Add(this.btnHome);
+            this.pnlSettings.Controls.Add(this.btnDelete);
+            this.pnlSettings.Controls.Add(this.lblSettingsEmail);
+            this.pnlSettings.Controls.Add(this.lblSettingsPreferences);
+            this.pnlSettings.Controls.Add(this.txtSettingsEmail);
+            this.pnlSettings.Controls.Add(this.txtSettingsPreferences);
+            this.pnlSettings.Controls.Add(this.btnSave);
+            this.pnlSettings.Controls.Add(this.lblSettingsPassword);
+            this.pnlSettings.Controls.Add(this.txtSettingsPassword);
+            this.pnlSettings.Location = new System.Drawing.Point(54, 62);
+            this.pnlSettings.Name = "pnlSettings";
+            this.pnlSettings.Size = new System.Drawing.Size(704, 266);
+            this.pnlSettings.TabIndex = 8;
+            this.pnlSettings.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSettings_Paint);
             // 
-            // lblPreferences
+            // btnHome
             // 
-            this.lblPreferences.AutoSize = true;
-            this.lblPreferences.Location = new System.Drawing.Point(117, 146);
-            this.lblPreferences.Name = "lblPreferences";
-            this.lblPreferences.Size = new System.Drawing.Size(83, 16);
-            this.lblPreferences.TabIndex = 16;
-            this.lblPreferences.Text = "Preferences:";
-            this.lblPreferences.Click += new System.EventHandler(this.lblPreferences_Click);
+            this.btnHome.Location = new System.Drawing.Point(433, 222);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(75, 34);
+            this.btnHome.TabIndex = 27;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // txtEmail
+            // btnDelete
             // 
-            this.txtEmail.Location = new System.Drawing.Point(112, 121);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 22);
-            this.txtEmail.TabIndex = 13;
-            // 
-            // txtPreferences
-            // 
-            this.txtPreferences.Location = new System.Drawing.Point(3, 168);
-            this.txtPreferences.Name = "txtPreferences";
-            this.txtPreferences.Size = new System.Drawing.Size(318, 22);
-            this.txtPreferences.TabIndex = 14;
+            this.btnDelete.Location = new System.Drawing.Point(310, 222);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 34);
+            this.btnDelete.TabIndex = 26;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lblSettingsEmail
             // 
@@ -297,26 +317,6 @@
             this.txtSettingsPassword.Name = "txtSettingsPassword";
             this.txtSettingsPassword.Size = new System.Drawing.Size(100, 22);
             this.txtSettingsPassword.TabIndex = 18;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(310, 222);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 34);
-            this.btnDelete.TabIndex = 26;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnHome
-            // 
-            this.btnHome.Location = new System.Drawing.Point(433, 222);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(75, 34);
-            this.btnHome.TabIndex = 27;
-            this.btnHome.Text = "Home";
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // frmLogin
             // 

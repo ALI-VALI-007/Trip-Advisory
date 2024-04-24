@@ -27,6 +27,13 @@ namespace Lab5
             this.Hide();
             loginPage.Show();
         }
+
+        private void btnDestinationPage_Click(object sender, EventArgs e)
+        {
+            frmDestination destinationPage = new frmDestination();
+            this.Hide();
+            destinationPage.Show();
+        }
     }
 }
 

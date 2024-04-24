@@ -50,6 +50,7 @@
             this.btnDestinationPage.TabIndex = 1;
             this.btnDestinationPage.Text = "Destination Management";
             this.btnDestinationPage.UseVisualStyleBackColor = true;
+            this.btnDestinationPage.Click += new System.EventHandler(this.btnDestinationPage_Click);
             // 
             // frmHome
             // 

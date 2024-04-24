@@ -16,6 +16,11 @@ namespace Lab5
     public partial class frmLogin : Form
     {
         private string curUserName;
+        public string activeUser()
+        {
+            return curUserName;
+        }
+
         public frmLogin()
         {
             InitializeComponent();
@@ -49,19 +54,16 @@ namespace Lab5
                 MessageBox.Show("Username/Password not found. Try again or sign up");
             }
         }
-
         private void btnSignup_Click(object sender, EventArgs e)
         {
             pnlLogin.Visible = false;
             pnlSignup.Visible = true;
             pnlSettings.Visible = false;
         }
-
         private void lblPreferences_Click(object sender, EventArgs e)
         {
 
         }
-
         private void btnCreateAcct_Click(object sender, EventArgs e)
         {
             travelerController controller = new travelerController();
@@ -83,18 +85,17 @@ namespace Lab5
                 MessageBox.Show("Account Not Created, password needs atleast 1 letter");
             }
         }
-
         private void pnlSettings_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             travelerController controller = new travelerController();
-            string password = txtSignupPassword.Text;
-            string email = txtEmail.Text;
-            string preferences = txtPreferences.Text;
+            string password = txtSettingsPassword.Text;
+            string email = txtSettingsEmail.Text;
+            string preferences = txtSettingsPreferences.Text;
+            //MessageBox.Show(curUserName);
             bool saved = controller.validTravelerUpdate(curUserName, email, preferences,password);
             if (saved)
             {
@@ -105,7 +106,6 @@ namespace Lab5
                 MessageBox.Show("Settings Not saved, password needs 1 character atleast");
             }
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             travelerController controller = new travelerController();
@@ -122,12 +122,6 @@ namespace Lab5
                 MessageBox.Show("User Not Deleted");
             }
         }
-
-        public string getCurUser()
-        {
-            return curUserName;
-        }
-
         private void btnHome_Click(object sender, EventArgs e)
         {
             frmHome homePage = new frmHome();

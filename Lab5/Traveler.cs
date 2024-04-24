@@ -134,7 +134,7 @@ namespace Lab5
             String query = "UPDATE traveler SET " +
               "[contactDetails] = @contactDetails, " +
               "[preferences] = @preferences, " +
-              "[password] = @password" +
+              "[password] = @password " +
               "WHERE [nameTraveler] = @nameTraveler";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 

@@ -48,7 +48,7 @@ namespace Lab5
             }
             return false;
         }
-        public bool validTripUpdate(string travelerName, string ratingStr, string comments)
+        public bool validReviewUpdate(string travelerName, string ratingStr, string comments)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
             int ratingInt= checkIfInt(ratingStr);
             if (travelerCheck(travelerName)==false && ratingInt!=0)

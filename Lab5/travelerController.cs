@@ -49,7 +49,7 @@ namespace Lab5
         }
         public bool validTravelerUpdate(string nameTraveler, string contactDetails, string preferences, string password)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
-            if (validTravelerLoad(nameTraveler) || checkIfInt(password) != -1)
+            if ( !validTravelerLoad(nameTraveler) || checkIfInt(password) != -1)
             {
                 return false;
             }

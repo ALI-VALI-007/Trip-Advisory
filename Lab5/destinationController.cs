@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Lab5
 {
@@ -12,11 +14,11 @@ namespace Lab5
         Destination curDestinaton;
         public destinationController()
         {//you can add stuff, i wouldnt
-            curDestinaton = null;
+            curDestinaton = new Destination("","",-1.0,"");
         }
         public bool validDestinationSave(string destinationName, string location, string cost, string URL) { 
-            float costFloat = checkIfFloat(cost);
-            if (costFloat == -1.0f || validDestinationLoad(destinationName))
+            double costFloat = checkIfFloat(cost);
+            if (costFloat == -1.0 || validDestinationLoad(destinationName))
             {
                 return false;
             }
@@ -46,8 +48,8 @@ namespace Lab5
         }
         public bool validDestinationUpdate(string destinationName, string location, string cost, string URL)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
-            float costFloat = checkIfFloat(cost);
-            if (costFloat == -1.0f || validDestinationLoad(destinationName))
+            double costFloat = checkIfFloat(cost);
+            if (costFloat == -1.0 || !validDestinationLoad(destinationName))
             {
                 return false;
             }
@@ -60,26 +62,36 @@ namespace Lab5
         }
         public List<string> getDestinationList()
         {
-
             List<Destination> destinationList= curDestinaton.loadAllDestinations();
             List<string> result= new List<string>();
             foreach (Destination loopDestination in destinationList)
             {
-                result.Add(loopDestination.getString());
+                //MessageBox.Show(loopDestination.getName());
+                result.Add(loopDestination.getName());
             }
             return result;
         }
-        private float checkIfFloat(string floatCheck) // checks if float and has only hundredth place decimal
+        private double checkIfFloat(string floatCheck) // checks if float and has only hundredth place decimal
         {
-            float number = -1.0f;
-            if (float.TryParse(floatCheck, out number))
+            double number = -1.0;
+            if (double.TryParse(floatCheck, out number))
             {
-                if (number % 0.01f == 0)
+                if ( (number*100) % 1 == 0)
                 {
                     return number;
                 }
             }
-            return number;
+            return -1;
+        }
+        public DataTable getDVG(string destinationName)
+        {
+            DataTable dt = new DataTable();
+            dt = curDestinaton.loadDGV(destinationName);
+            return dt;
+        }
+        public string getURL()
+        {
+            return this.curDestinaton.getURL();
         }
     }
 }

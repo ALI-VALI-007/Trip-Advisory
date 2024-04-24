@@ -14,15 +14,15 @@ namespace Lab5
         Destination curDestinaton;
         public destinationController()
         {//you can add stuff, i wouldnt
-            curDestinaton = new Destination("","",-1.0,"");
+            curDestinaton = new Destination("","",-1.0,"","");
         }
-        public bool validDestinationSave(string destinationName, string location, string cost, string URL) { 
+        public bool validDestinationSave(string destinationName, string location, string cost, string URL, string attractions) { 
             double costFloat = checkIfFloat(cost);
             if (costFloat == -1.0 || validDestinationLoad(destinationName))
             {
                 return false;
             }
-            curDestinaton = new Destination(destinationName, location, costFloat, URL);
+            curDestinaton = new Destination(destinationName, location, costFloat, URL, attractions);
             curDestinaton.saveDestination();
             return true;
         }
@@ -46,7 +46,7 @@ namespace Lab5
             }
             return false;
         }
-        public bool validDestinationUpdate(string destinationName, string location, string cost, string URL)
+        public bool validDestinationUpdate(string destinationName, string location, string cost, string URL, string attractions)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
             double costFloat = checkIfFloat(cost);
             if (costFloat == -1.0 || !validDestinationLoad(destinationName))
@@ -57,6 +57,7 @@ namespace Lab5
             curDestinaton.setLocation(location);
             curDestinaton.setCost(costFloat);
             curDestinaton.setURL(URL);
+            curDestinaton.setAttractions(attractions);
             curDestinaton.updateDestination();
             return true;
         }

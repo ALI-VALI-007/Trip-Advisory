@@ -42,11 +42,13 @@ namespace Lab5
         string location;
         double cost;
         string URL;
-        public Destination(string destinationName, string location, double cost, string URL) {
+        string attractions;
+        public Destination(string destinationName, string location, double cost, string URL, string attractions) {
             this.destinationName = destinationName;
             this.location = location;
             this.cost = cost;
             this.URL = URL;
+            this.attractions = attractions;
         }
         public string getName()
         {
@@ -64,19 +66,24 @@ namespace Lab5
         {
             return this.location;
         }
+        public string getAttractions()
+        {
+            return this.attractions;
+        }
         public void saveDestination()
         {
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
 
-            String query = "INSERT INTO destinations ([destinationName], [location], [cost], [URL]) " +
-                           "VALUES (@destinationName, @location, @cost, @URL)";
+            String query = "INSERT INTO destinations ([destinationName], [location], [cost], [URL], [attractions]) " +
+                           "VALUES (@destinationName, @location, @cost, @URL, @attractions)";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
             cmd.Parameters.AddWithValue("@destinationName", this.destinationName);
             cmd.Parameters.AddWithValue("@location", this.location);
             cmd.Parameters.AddWithValue("@cost", this.cost);
             cmd.Parameters.AddWithValue("@URL", this.URL);
+            cmd.Parameters.AddWithValue("@attractions", this.attractions);
 
             cmd.ExecuteNonQuery();
             myConnection.Close();
@@ -99,6 +106,7 @@ namespace Lab5
                 this.location = reader.GetString(reader.GetOrdinal("location"));
                 this.cost = convertToDouble(reader.GetDecimal(reader.GetOrdinal("cost")));
                 this.URL= reader.GetString(reader.GetOrdinal("URL"));
+                this.attractions = reader.GetString(reader.GetOrdinal("attractions"));
             }
             reader.Close();
             myConnection.Close();
@@ -125,6 +133,7 @@ namespace Lab5
               "[cost] = @cost, " +
               "[location] = @comments, " +
               "[URL] = @URL, "+
+              "[attractions] = @attractions " +
               "WHERE [destinationName] = @destinationName";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
@@ -133,6 +142,7 @@ namespace Lab5
             cmd.Parameters.AddWithValue("@location", this.location);
             cmd.Parameters.AddWithValue("@URL", this.URL);
             cmd.Parameters.AddWithValue("@destinationName", this.destinationName);
+            cmd.Parameters.AddWithValue("@attractions", this.attractions);
 
             //execute
             cmd.ExecuteNonQuery();
@@ -156,6 +166,10 @@ namespace Lab5
         {
             this.URL = url;
         }
+        public void setAttractions(string attractions)
+        {
+            this.attractions = attractions;
+        }
 
         public List<Destination> loadAllDestinations()
         {
@@ -174,7 +188,9 @@ namespace Lab5
                 this.location = reader.GetString(reader.GetOrdinal("location"));
                 this.cost = convertToDouble(reader.GetDecimal(reader.GetOrdinal("cost")));
                 this.URL = reader.GetString(reader.GetOrdinal("URL"));
-                Destination newDestination = new Destination(destinationName, location, cost, URL);
+                this.attractions = reader.GetString(reader.GetOrdinal("attractions"));
+
+                Destination newDestination = new Destination(destinationName, location, cost, URL, attractions);
                 list.Add(newDestination);
             }
             reader.Close();

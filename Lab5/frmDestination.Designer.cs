@@ -30,16 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnlCreateDestination = new System.Windows.Forms.Panel();
-            this.lblCreationName = new System.Windows.Forms.Label();
-            this.txtCreationName = new System.Windows.Forms.TextBox();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.txtCreationLocation = new System.Windows.Forms.TextBox();
-            this.lblCreationLocation = new System.Windows.Forms.Label();
-            this.txtCreationCost = new System.Windows.Forms.TextBox();
-            this.lblCreationCost = new System.Windows.Forms.Label();
             this.txtCreationURL = new System.Windows.Forms.TextBox();
             this.lblCreationURL = new System.Windows.Forms.Label();
+            this.txtCreationCost = new System.Windows.Forms.TextBox();
+            this.lblCreationCost = new System.Windows.Forms.Label();
+            this.txtCreationLocation = new System.Windows.Forms.TextBox();
+            this.lblCreationLocation = new System.Windows.Forms.Label();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.txtCreationName = new System.Windows.Forms.TextBox();
+            this.lblCreationName = new System.Windows.Forms.Label();
             this.pnlModify = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.cbxModifyDestination = new System.Windows.Forms.ComboBox();
             this.txtModifyURL = new System.Windows.Forms.TextBox();
             this.lblModifyURL = new System.Windows.Forms.Label();
             this.txtModifyCost = new System.Windows.Forms.TextBox();
@@ -48,34 +50,38 @@
             this.lblModifyLocation = new System.Windows.Forms.Label();
             this.btnModify = new System.Windows.Forms.Button();
             this.lblModifyDestination = new System.Windows.Forms.Label();
-            this.cbxModifyDestination = new System.Windows.Forms.ComboBox();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnCreatePage = new System.Windows.Forms.Button();
             this.btnModifyPage = new System.Windows.Forms.Button();
             this.btnSearchPage = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.pnlSearch = new System.Windows.Forms.Panel();
+            this.pbxDestinationPicture = new System.Windows.Forms.PictureBox();
+            this.lblSearchDestination = new System.Windows.Forms.Label();
+            this.cbxSearchDestination = new System.Windows.Forms.ComboBox();
             this.dgvSearchDestination = new System.Windows.Forms.DataGridView();
-            this.lab5DBDataSet = new Lab5.lab5DBDataSet();
-            this.destinationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.destinationsTableAdapter = new Lab5.lab5DBDataSetTableAdapters.destinationsTableAdapter();
             this.destinationNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbxSearchDestination = new System.Windows.Forms.ComboBox();
-            this.lblSearchDestination = new System.Windows.Forms.Label();
-            this.pbxDestinationPicture = new System.Windows.Forms.PictureBox();
+            this.destinationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lab5DBDataSet = new Lab5.lab5DBDataSet();
+            this.destinationsTableAdapter = new Lab5.lab5DBDataSetTableAdapters.destinationsTableAdapter();
+            this.txtModifyAttractions = new System.Windows.Forms.TextBox();
+            this.lblModifyAttractions = new System.Windows.Forms.Label();
+            this.txtCreateAttractions = new System.Windows.Forms.TextBox();
+            this.lblAttractions = new System.Windows.Forms.Label();
             this.pnlCreateDestination.SuspendLayout();
             this.pnlModify.SuspendLayout();
             this.pnlSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSearchDestination)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lab5DBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.destinationsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDestinationPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSearchDestination)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.destinationsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lab5DBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCreateDestination
             // 
+            this.pnlCreateDestination.Controls.Add(this.txtCreateAttractions);
+            this.pnlCreateDestination.Controls.Add(this.lblAttractions);
             this.pnlCreateDestination.Controls.Add(this.txtCreationURL);
             this.pnlCreateDestination.Controls.Add(this.lblCreationURL);
             this.pnlCreateDestination.Controls.Add(this.txtCreationCost);
@@ -90,31 +96,37 @@
             this.pnlCreateDestination.Size = new System.Drawing.Size(464, 266);
             this.pnlCreateDestination.TabIndex = 0;
             // 
-            // lblCreationName
+            // txtCreationURL
             // 
-            this.lblCreationName.AutoSize = true;
-            this.lblCreationName.Location = new System.Drawing.Point(66, 25);
-            this.lblCreationName.Name = "lblCreationName";
-            this.lblCreationName.Size = new System.Drawing.Size(117, 16);
-            this.lblCreationName.TabIndex = 0;
-            this.lblCreationName.Text = "Destination Name:";
+            this.txtCreationURL.Location = new System.Drawing.Point(339, 132);
+            this.txtCreationURL.Name = "txtCreationURL";
+            this.txtCreationURL.Size = new System.Drawing.Size(100, 22);
+            this.txtCreationURL.TabIndex = 8;
             // 
-            // txtCreationName
+            // lblCreationURL
             // 
-            this.txtCreationName.Location = new System.Drawing.Point(69, 44);
-            this.txtCreationName.Name = "txtCreationName";
-            this.txtCreationName.Size = new System.Drawing.Size(100, 22);
-            this.txtCreationName.TabIndex = 1;
+            this.lblCreationURL.AutoSize = true;
+            this.lblCreationURL.Location = new System.Drawing.Point(336, 113);
+            this.lblCreationURL.Name = "lblCreationURL";
+            this.lblCreationURL.Size = new System.Drawing.Size(37, 16);
+            this.lblCreationURL.TabIndex = 7;
+            this.lblCreationURL.Text = "URL:";
             // 
-            // btnCreate
+            // txtCreationCost
             // 
-            this.btnCreate.Location = new System.Drawing.Point(191, 213);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
-            this.btnCreate.TabIndex = 2;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.txtCreationCost.Location = new System.Drawing.Point(16, 132);
+            this.txtCreationCost.Name = "txtCreationCost";
+            this.txtCreationCost.Size = new System.Drawing.Size(100, 22);
+            this.txtCreationCost.TabIndex = 6;
+            // 
+            // lblCreationCost
+            // 
+            this.lblCreationCost.AutoSize = true;
+            this.lblCreationCost.Location = new System.Drawing.Point(13, 113);
+            this.lblCreationCost.Name = "lblCreationCost";
+            this.lblCreationCost.Size = new System.Drawing.Size(37, 16);
+            this.lblCreationCost.TabIndex = 5;
+            this.lblCreationCost.Text = "Cost:";
             // 
             // txtCreationLocation
             // 
@@ -132,40 +144,36 @@
             this.lblCreationLocation.TabIndex = 3;
             this.lblCreationLocation.Text = "Location:";
             // 
-            // txtCreationCost
+            // btnCreate
             // 
-            this.txtCreationCost.Location = new System.Drawing.Point(69, 133);
-            this.txtCreationCost.Name = "txtCreationCost";
-            this.txtCreationCost.Size = new System.Drawing.Size(100, 22);
-            this.txtCreationCost.TabIndex = 6;
+            this.btnCreate.Location = new System.Drawing.Point(191, 213);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.TabIndex = 2;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // lblCreationCost
+            // txtCreationName
             // 
-            this.lblCreationCost.AutoSize = true;
-            this.lblCreationCost.Location = new System.Drawing.Point(66, 114);
-            this.lblCreationCost.Name = "lblCreationCost";
-            this.lblCreationCost.Size = new System.Drawing.Size(37, 16);
-            this.lblCreationCost.TabIndex = 5;
-            this.lblCreationCost.Text = "Cost:";
+            this.txtCreationName.Location = new System.Drawing.Point(69, 44);
+            this.txtCreationName.Name = "txtCreationName";
+            this.txtCreationName.Size = new System.Drawing.Size(100, 22);
+            this.txtCreationName.TabIndex = 1;
             // 
-            // txtCreationURL
+            // lblCreationName
             // 
-            this.txtCreationURL.Location = new System.Drawing.Point(273, 133);
-            this.txtCreationURL.Name = "txtCreationURL";
-            this.txtCreationURL.Size = new System.Drawing.Size(100, 22);
-            this.txtCreationURL.TabIndex = 8;
-            // 
-            // lblCreationURL
-            // 
-            this.lblCreationURL.AutoSize = true;
-            this.lblCreationURL.Location = new System.Drawing.Point(270, 114);
-            this.lblCreationURL.Name = "lblCreationURL";
-            this.lblCreationURL.Size = new System.Drawing.Size(37, 16);
-            this.lblCreationURL.TabIndex = 7;
-            this.lblCreationURL.Text = "URL:";
+            this.lblCreationName.AutoSize = true;
+            this.lblCreationName.Location = new System.Drawing.Point(66, 25);
+            this.lblCreationName.Name = "lblCreationName";
+            this.lblCreationName.Size = new System.Drawing.Size(117, 16);
+            this.lblCreationName.TabIndex = 0;
+            this.lblCreationName.Text = "Destination Name:";
             // 
             // pnlModify
             // 
+            this.pnlModify.Controls.Add(this.txtModifyAttractions);
+            this.pnlModify.Controls.Add(this.lblModifyAttractions);
             this.pnlModify.Controls.Add(this.btnDelete);
             this.pnlModify.Controls.Add(this.cbxModifyDestination);
             this.pnlModify.Controls.Add(this.txtModifyURL);
@@ -176,15 +184,34 @@
             this.pnlModify.Controls.Add(this.lblModifyLocation);
             this.pnlModify.Controls.Add(this.btnModify);
             this.pnlModify.Controls.Add(this.lblModifyDestination);
-            this.pnlModify.Location = new System.Drawing.Point(118, 124);
+            this.pnlModify.Location = new System.Drawing.Point(116, 99);
             this.pnlModify.Name = "pnlModify";
-            this.pnlModify.Size = new System.Drawing.Size(558, 286);
+            this.pnlModify.Size = new System.Drawing.Size(559, 301);
             this.pnlModify.TabIndex = 9;
             this.pnlModify.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(333, 218);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // cbxModifyDestination
+            // 
+            this.cbxModifyDestination.FormattingEnabled = true;
+            this.cbxModifyDestination.Location = new System.Drawing.Point(129, 57);
+            this.cbxModifyDestination.Name = "cbxModifyDestination";
+            this.cbxModifyDestination.Size = new System.Drawing.Size(100, 24);
+            this.cbxModifyDestination.TabIndex = 18;
+            this.cbxModifyDestination.SelectedIndexChanged += new System.EventHandler(this.cbxModifyDestination_SelectedIndexChanged);
+            // 
             // txtModifyURL
             // 
-            this.txtModifyURL.Location = new System.Drawing.Point(333, 146);
+            this.txtModifyURL.Location = new System.Drawing.Point(408, 146);
             this.txtModifyURL.Name = "txtModifyURL";
             this.txtModifyURL.Size = new System.Drawing.Size(100, 22);
             this.txtModifyURL.TabIndex = 17;
@@ -192,7 +219,7 @@
             // lblModifyURL
             // 
             this.lblModifyURL.AutoSize = true;
-            this.lblModifyURL.Location = new System.Drawing.Point(330, 127);
+            this.lblModifyURL.Location = new System.Drawing.Point(405, 127);
             this.lblModifyURL.Name = "lblModifyURL";
             this.lblModifyURL.Size = new System.Drawing.Size(37, 16);
             this.lblModifyURL.TabIndex = 16;
@@ -200,7 +227,7 @@
             // 
             // txtModifyCost
             // 
-            this.txtModifyCost.Location = new System.Drawing.Point(129, 146);
+            this.txtModifyCost.Location = new System.Drawing.Point(44, 146);
             this.txtModifyCost.Name = "txtModifyCost";
             this.txtModifyCost.Size = new System.Drawing.Size(100, 22);
             this.txtModifyCost.TabIndex = 15;
@@ -208,7 +235,7 @@
             // lblModifyCost
             // 
             this.lblModifyCost.AutoSize = true;
-            this.lblModifyCost.Location = new System.Drawing.Point(126, 127);
+            this.lblModifyCost.Location = new System.Drawing.Point(41, 127);
             this.lblModifyCost.Name = "lblModifyCost";
             this.lblModifyCost.Size = new System.Drawing.Size(37, 16);
             this.lblModifyCost.TabIndex = 14;
@@ -248,25 +275,6 @@
             this.lblModifyDestination.Size = new System.Drawing.Size(117, 16);
             this.lblModifyDestination.TabIndex = 9;
             this.lblModifyDestination.Text = "Destination Name:";
-            // 
-            // cbxModifyDestination
-            // 
-            this.cbxModifyDestination.FormattingEnabled = true;
-            this.cbxModifyDestination.Location = new System.Drawing.Point(129, 57);
-            this.cbxModifyDestination.Name = "cbxModifyDestination";
-            this.cbxModifyDestination.Size = new System.Drawing.Size(100, 24);
-            this.cbxModifyDestination.TabIndex = 18;
-            this.cbxModifyDestination.SelectedIndexChanged += new System.EventHandler(this.cbxModifyDestination_SelectedIndexChanged);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(333, 218);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 19;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnCreatePage
             // 
@@ -314,10 +322,37 @@
             this.pnlSearch.Controls.Add(this.lblSearchDestination);
             this.pnlSearch.Controls.Add(this.cbxSearchDestination);
             this.pnlSearch.Controls.Add(this.dgvSearchDestination);
-            this.pnlSearch.Location = new System.Drawing.Point(118, 96);
+            this.pnlSearch.Location = new System.Drawing.Point(735, 213);
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(562, 342);
             this.pnlSearch.TabIndex = 16;
+            // 
+            // pbxDestinationPicture
+            // 
+            this.pbxDestinationPicture.Location = new System.Drawing.Point(377, 189);
+            this.pbxDestinationPicture.Name = "pbxDestinationPicture";
+            this.pbxDestinationPicture.Size = new System.Drawing.Size(182, 150);
+            this.pbxDestinationPicture.TabIndex = 20;
+            this.pbxDestinationPicture.TabStop = false;
+            this.pbxDestinationPicture.Click += new System.EventHandler(this.pbxDestinationPicture_Click);
+            // 
+            // lblSearchDestination
+            // 
+            this.lblSearchDestination.AutoSize = true;
+            this.lblSearchDestination.Location = new System.Drawing.Point(181, 13);
+            this.lblSearchDestination.Name = "lblSearchDestination";
+            this.lblSearchDestination.Size = new System.Drawing.Size(77, 16);
+            this.lblSearchDestination.TabIndex = 19;
+            this.lblSearchDestination.Text = "Destination:";
+            // 
+            // cbxSearchDestination
+            // 
+            this.cbxSearchDestination.FormattingEnabled = true;
+            this.cbxSearchDestination.Location = new System.Drawing.Point(171, 32);
+            this.cbxSearchDestination.Name = "cbxSearchDestination";
+            this.cbxSearchDestination.Size = new System.Drawing.Size(186, 24);
+            this.cbxSearchDestination.TabIndex = 18;
+            this.cbxSearchDestination.SelectedIndexChanged += new System.EventHandler(this.cbxSearchDestination_SelectedIndexChanged);
             // 
             // dgvSearchDestination
             // 
@@ -328,27 +363,13 @@
             this.locationDataGridViewTextBoxColumn,
             this.costDataGridViewTextBoxColumn});
             this.dgvSearchDestination.DataSource = this.destinationsBindingSource;
-            this.dgvSearchDestination.Location = new System.Drawing.Point(49, 62);
+            this.dgvSearchDestination.Location = new System.Drawing.Point(3, 62);
             this.dgvSearchDestination.Name = "dgvSearchDestination";
             this.dgvSearchDestination.RowHeadersWidth = 51;
             this.dgvSearchDestination.RowTemplate.Height = 24;
-            this.dgvSearchDestination.Size = new System.Drawing.Size(427, 150);
+            this.dgvSearchDestination.Size = new System.Drawing.Size(552, 150);
             this.dgvSearchDestination.TabIndex = 0;
             this.dgvSearchDestination.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearchDestination_CellContentClick);
-            // 
-            // lab5DBDataSet
-            // 
-            this.lab5DBDataSet.DataSetName = "lab5DBDataSet";
-            this.lab5DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // destinationsBindingSource
-            // 
-            this.destinationsBindingSource.DataMember = "destinations";
-            this.destinationsBindingSource.DataSource = this.lab5DBDataSet;
-            // 
-            // destinationsTableAdapter
-            // 
-            this.destinationsTableAdapter.ClearBeforeFill = true;
             // 
             // destinationNameDataGridViewTextBoxColumn
             // 
@@ -374,32 +395,52 @@
             this.costDataGridViewTextBoxColumn.Name = "costDataGridViewTextBoxColumn";
             this.costDataGridViewTextBoxColumn.Width = 125;
             // 
-            // cbxSearchDestination
+            // destinationsBindingSource
             // 
-            this.cbxSearchDestination.FormattingEnabled = true;
-            this.cbxSearchDestination.Location = new System.Drawing.Point(171, 32);
-            this.cbxSearchDestination.Name = "cbxSearchDestination";
-            this.cbxSearchDestination.Size = new System.Drawing.Size(186, 24);
-            this.cbxSearchDestination.TabIndex = 18;
-            this.cbxSearchDestination.SelectedIndexChanged += new System.EventHandler(this.cbxSearchDestination_SelectedIndexChanged);
+            this.destinationsBindingSource.DataMember = "destinations";
+            this.destinationsBindingSource.DataSource = this.lab5DBDataSet;
             // 
-            // lblSearchDestination
+            // lab5DBDataSet
             // 
-            this.lblSearchDestination.AutoSize = true;
-            this.lblSearchDestination.Location = new System.Drawing.Point(181, 13);
-            this.lblSearchDestination.Name = "lblSearchDestination";
-            this.lblSearchDestination.Size = new System.Drawing.Size(77, 16);
-            this.lblSearchDestination.TabIndex = 19;
-            this.lblSearchDestination.Text = "Destination:";
+            this.lab5DBDataSet.DataSetName = "lab5DBDataSet";
+            this.lab5DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // pbxDestinationPicture
+            // destinationsTableAdapter
             // 
-            this.pbxDestinationPicture.Location = new System.Drawing.Point(377, 189);
-            this.pbxDestinationPicture.Name = "pbxDestinationPicture";
-            this.pbxDestinationPicture.Size = new System.Drawing.Size(182, 150);
-            this.pbxDestinationPicture.TabIndex = 20;
-            this.pbxDestinationPicture.TabStop = false;
-            this.pbxDestinationPicture.Click += new System.EventHandler(this.pbxDestinationPicture_Click);
+            this.destinationsTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtModifyAttractions
+            // 
+            this.txtModifyAttractions.Location = new System.Drawing.Point(200, 146);
+            this.txtModifyAttractions.Name = "txtModifyAttractions";
+            this.txtModifyAttractions.Size = new System.Drawing.Size(157, 22);
+            this.txtModifyAttractions.TabIndex = 21;
+            // 
+            // lblModifyAttractions
+            // 
+            this.lblModifyAttractions.AutoSize = true;
+            this.lblModifyAttractions.Location = new System.Drawing.Point(197, 127);
+            this.lblModifyAttractions.Name = "lblModifyAttractions";
+            this.lblModifyAttractions.Size = new System.Drawing.Size(72, 16);
+            this.lblModifyAttractions.TabIndex = 20;
+            this.lblModifyAttractions.Text = "Attractions:";
+            this.lblModifyAttractions.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // txtCreateAttractions
+            // 
+            this.txtCreateAttractions.Location = new System.Drawing.Point(154, 132);
+            this.txtCreateAttractions.Name = "txtCreateAttractions";
+            this.txtCreateAttractions.Size = new System.Drawing.Size(152, 22);
+            this.txtCreateAttractions.TabIndex = 15;
+            // 
+            // lblAttractions
+            // 
+            this.lblAttractions.AutoSize = true;
+            this.lblAttractions.Location = new System.Drawing.Point(151, 113);
+            this.lblAttractions.Name = "lblAttractions";
+            this.lblAttractions.Size = new System.Drawing.Size(72, 16);
+            this.lblAttractions.TabIndex = 14;
+            this.lblAttractions.Text = "Attractions:";
             // 
             // frmDestination
             // 
@@ -411,8 +452,8 @@
             this.Controls.Add(this.btnSearchPage);
             this.Controls.Add(this.btnModifyPage);
             this.Controls.Add(this.btnCreatePage);
-            this.Controls.Add(this.pnlModify);
             this.Controls.Add(this.pnlCreateDestination);
+            this.Controls.Add(this.pnlModify);
             this.Name = "frmDestination";
             this.Text = "frmDestination";
             this.Load += new System.EventHandler(this.frmDestination_Load);
@@ -422,10 +463,10 @@
             this.pnlModify.PerformLayout();
             this.pnlSearch.ResumeLayout(false);
             this.pnlSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSearchDestination)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lab5DBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.destinationsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDestinationPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSearchDestination)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.destinationsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lab5DBDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -468,5 +509,9 @@
         private System.Windows.Forms.ComboBox cbxSearchDestination;
         private System.Windows.Forms.Label lblSearchDestination;
         private System.Windows.Forms.PictureBox pbxDestinationPicture;
+        private System.Windows.Forms.TextBox txtModifyAttractions;
+        private System.Windows.Forms.Label lblModifyAttractions;
+        private System.Windows.Forms.TextBox txtCreateAttractions;
+        private System.Windows.Forms.Label lblAttractions;
     }
 }

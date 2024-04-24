@@ -31,7 +31,8 @@ namespace Lab5
             string location = txtCreationLocation.Text;
             string cost = txtCreationCost.Text;
             string URL = txtCreationURL.Text;
-            bool valid = controller.validDestinationSave(destinationName,location,cost,URL);
+            string attractons = txtCreateAttractions.Text;
+            bool valid = controller.validDestinationSave(destinationName,location,cost,URL, attractons);
             if (valid)
             {
                 MessageBox.Show("Created");
@@ -54,7 +55,8 @@ namespace Lab5
             string location = txtModifyLocation.Text;
             string cost = txtModifyCost.Text;
             string URL = txtModifyURL.Text;
-            bool valid = controller.validDestinationUpdate(destinationName, location, cost, URL);
+            string attractions = txtModifyAttractions.Text;
+            bool valid = controller.validDestinationUpdate(destinationName, location, cost, URL,attractions);
             if (valid)
             {
                 MessageBox.Show("Modified");

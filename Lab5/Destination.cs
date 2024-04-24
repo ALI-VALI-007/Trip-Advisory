@@ -219,5 +219,57 @@ namespace Lab5
         {
             return (double)value;
         }
+        public List<Destination> filterDestination(double priceFilter, string destinationFilter, string attractionsFilter)
+        {
+            List<Destination> list = new List<Destination>();
+            string query = "SELECT * " +
+              "FROM destinations ";
+            bool priceFilterExists = priceFilter > 0;
+            bool attractionsFilterExists = !string.IsNullOrEmpty(attractionsFilter);
+            bool destinationFilterExists = !string.IsNullOrEmpty(destinationFilter);
+            List<string> whereQuery = new List<string>();
+            if (priceFilterExists || attractionsFilterExists || destinationFilterExists)
+            {
+                query += "WHERE ";
+            }
+            if (priceFilterExists)
+            {
+                whereQuery.Add("[cost] = @priceFilter");
+            }
+            if (attractionsFilterExists)
+            {
+                whereQuery.Add("[attractions] = @attractionsFilter");
+            }
+            if (destinationFilterExists)
+            {
+                whereQuery.Add("[destinationFilter] = @destinationFilter");
+            }
+            string finishedWhereQuery = string.Join("&", whereQuery);
+            if( string.IsNullOrEmpty(finishedWhereQuery) )
+            {
+                query += finishedWhereQuery;
+            }
+
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection.Open();
+            OleDbCommand cmd = new OleDbCommand(query, myConnection);
+
+            OleDbDataReader reader = cmd.ExecuteReader();
+            foreach (var row in reader)
+            {
+                this.destinationName = reader.GetString(reader.GetOrdinal("destinationName"));
+                this.location = reader.GetString(reader.GetOrdinal("location"));
+                this.cost = convertToDouble(reader.GetDecimal(reader.GetOrdinal("cost")));
+                this.URL = reader.GetString(reader.GetOrdinal("URL"));
+                this.attractions = reader.GetString(reader.GetOrdinal("attractions"));
+
+                Destination newDestination = new Destination(destinationName, location, cost, URL, attractions);
+                list.Add(newDestination);
+            }
+            reader.Close();
+            myConnection.Close();
+            return list;
+        }
+
     }
 }

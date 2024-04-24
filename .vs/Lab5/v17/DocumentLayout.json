@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\12674\\lab5\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|c:\\users\\12674\\lab5\\lab5\\destination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|solutionrelative:lab5\\destination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|c:\\users\\12674\\lab5\\lab5\\destinationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|solutionrelative:lab5\\destinationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|c:\\users\\12674\\lab5\\lab5\\trip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|solutionrelative:lab5\\trip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|C:\\Users\\12674\\lab5\\lab5\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|solutionrelative:lab5\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,40 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "destinationController.cs",
-              "DocumentMoniker": "C:\\Users\\12674\\lab5\\Lab5\\destinationController.cs",
-              "RelativeDocumentMoniker": "Lab5\\destinationController.cs",
-              "ToolTip": "C:\\Users\\12674\\lab5\\Lab5\\destinationController.cs",
-              "RelativeToolTip": "Lab5\\destinationController.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAAswFYAAAA3AAAA",
+              "Title": "Destination.cs",
+              "DocumentMoniker": "C:\\Users\\12674\\lab5\\Lab5\\Destination.cs",
+              "RelativeDocumentMoniker": "Lab5\\Destination.cs",
+              "ToolTip": "C:\\Users\\12674\\lab5\\Lab5\\Destination.cs",
+              "RelativeToolTip": "Lab5\\Destination.cs",
+              "ViewState": "AQIAAKYAAAAAAAAAAAAawOIAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T13:49:12.315Z",
+              "WhenOpened": "2024-04-24T20:22:12.106Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Trip.cs",
-              "DocumentMoniker": "C:\\Users\\12674\\lab5\\Lab5\\Trip.cs",
-              "RelativeDocumentMoniker": "Lab5\\Trip.cs",
-              "ToolTip": "C:\\Users\\12674\\lab5\\Lab5\\Trip.cs",
-              "RelativeToolTip": "Lab5\\Trip.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAACQAAAAhAAAA",
+              "Title": "destinationController.cs",
+              "DocumentMoniker": "C:\\Users\\12674\\lab5\\Lab5\\destinationController.cs",
+              "RelativeDocumentMoniker": "Lab5\\destinationController.cs",
+              "ToolTip": "C:\\Users\\12674\\lab5\\Lab5\\destinationController.cs",
+              "RelativeToolTip": "Lab5\\destinationController.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAUwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T13:43:46.151Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "tripController.cs",
-              "DocumentMoniker": "C:\\Users\\12674\\lab5\\Lab5\\tripController.cs",
-              "RelativeDocumentMoniker": "Lab5\\tripController.cs",
-              "ToolTip": "C:\\Users\\12674\\lab5\\Lab5\\tripController.cs",
-              "RelativeToolTip": "Lab5\\tripController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADwAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T12:18:00.046Z",
+              "WhenOpened": "2024-04-24T20:04:14.232Z",
               "EditorCaption": ""
             }
           ]

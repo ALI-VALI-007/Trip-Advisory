@@ -13,15 +13,15 @@ namespace Lab5
         {//you can add stuff, i wouldnt
             curTrip = null;
         }
-        public bool validTripSave(string idNumber, string dateMade, string activities, string accomendations, string destination, string additionalCost, string tName)
+        public bool validTripSave(string idNumber, string dateMade, string activities, string accomendations, string destination, string additionalCost, string tName, string status, string careTaker, string dateOver)
         {
             int tripIdInt = checkIfInt(idNumber);
-            float additionalCostFloat = checkIfFloat(additionalCost);
-            if (additionalCostFloat == -1.0f || tripIdInt == -1 || (validTripLoad(idNumber) == false) )
+            double additionalCostFloat = checkIfFloat(additionalCost);
+            if (additionalCostFloat == -1.0 || tripIdInt == -1 || (validTripLoad(idNumber) == false) )
             {
                 return false;
             }
-            curTrip = new Trip(tripIdInt,dateMade, activities,accomendations,destination,additionalCostFloat, tName);
+            curTrip = new Trip(tripIdInt,dateMade, activities,accomendations,destination,additionalCostFloat, tName, status, careTaker, dateOver);
             curTrip.saveTrip();
             return true;
         }
@@ -32,7 +32,7 @@ namespace Lab5
             if (tripID != -1)
             {
                 this.curTrip.loadTrip(tripID);
-                if(this.curTrip.getDateMade() != "")
+                if( string.IsNullOrEmpty(this.curTrip.getDateMade()) )
                 {
                     return true;
                 }
@@ -50,11 +50,11 @@ namespace Lab5
             }
             return false;
         }
-        public bool validTripUpdate(string idNumber, string dateMade, string activities, string accomendations, string destination, string additionalCost)
+        public bool validTripUpdate(string idNumber, string dateMade, string activities, string accomendations, string destination, string additionalCost, string tName, string status, string careTaker, string dateOver)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
             int tripIdInt = checkIfInt(idNumber);
-            float additionalCostFloat = checkIfFloat(additionalCost);
-            if ( additionalCostFloat == -1.0f || tripIdInt == -1 || !validTripLoad(idNumber) || destinationCheck(destination)==false )
+            double additionalCostFloat = checkIfFloat(additionalCost);
+            if ( additionalCostFloat == -1.0 || tripIdInt == -1 || !validTripLoad(idNumber) || destinationCheck(destination)==false )
             {
                 return false;
             }
@@ -64,6 +64,10 @@ namespace Lab5
             curTrip.setDestination(destination); //trigger destination validation as well (just load it)
             curTrip.setaccomedations(accomendations);
             curTrip.setAdditionalCost(additionalCostFloat);
+            curTrip.settName(tName);
+            curTrip.setStatus(status);
+            curTrip.setCareTaker(careTaker);
+            curTrip.setDateOver(dateOver);
             curTrip.updateTrip();
             return true;
         }
@@ -75,28 +79,32 @@ namespace Lab5
             }
             return number;
         }
-        private float checkIfFloat(string floatCheck) // checks if float and has only hundredth place decimal
+        private double checkIfFloat(string floatCheck) // checks if float and has only hundredth place decimal
         {
-            float number = -1.0f;
-            if (float.TryParse(floatCheck, out number))
+            double number = -1.0;
+            if (double.TryParse(floatCheck, out number))
             {
-                if(number % 0.01f == 0){
+                if ((number * 100) % 1 == 0)
+                {
                     return number;
                 }
             }
-            return number;
+            return -1;
         }
         private bool destinationCheck(string destinationName)
         {
             Destination destination = null;
             destination.loadDestination(destinationName);
             string location = destination.getLocation();
-            if (location == "")
+            if ( string.IsNullOrEmpty(location) )
             {
                 return false;
             }
             return true;
         }
-
+        public string getRecipt()
+        {
+            return this.curTrip.getString();
+        }
     }
 }

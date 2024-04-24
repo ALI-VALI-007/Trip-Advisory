@@ -29,7 +29,7 @@ namespace Lab5
         public bool validDestinationLoad(string destinationName) //Basically itll check if the textbox is valid int, then check if date is empty to see if the values loaded
         {
             curDestinaton.loadDestination(destinationName);
-            if (this.curDestinaton.getLocation() != "")
+            if ( string.IsNullOrEmpty(this.curDestinaton.getLocation()) )
             {
                 return true;
             }

@@ -12,6 +12,11 @@ namespace Lab5
 {
     public partial class frmDestination : Form
     {
+        private string curUsername;
+        public void setUser(string username)
+        {
+            curUsername = username;
+        }
         public frmDestination()
         {
             InitializeComponent();
@@ -31,8 +36,14 @@ namespace Lab5
             string location = txtCreationLocation.Text;
             string cost = txtCreationCost.Text;
             string URL = txtCreationURL.Text;
-            string attractons = txtCreateAttractions.Text;
-            bool valid = controller.validDestinationSave(destinationName,location,cost,URL, attractons);
+            List<string> selectedAttractions = new List<string>();
+            foreach (var item in cblCreateAttractions.CheckedItems)
+            {
+                selectedAttractions.Add(item.ToString());
+            }
+            string selectedAttractionsStr = string.Join(",", selectedAttractions);
+
+            bool valid = controller.validDestinationSave(destinationName,location,cost,URL, selectedAttractionsStr);
             if (valid)
             {
                 MessageBox.Show("Created");
@@ -55,8 +66,16 @@ namespace Lab5
             string location = txtModifyLocation.Text;
             string cost = txtModifyCost.Text;
             string URL = txtModifyURL.Text;
-            string attractions = txtModifyAttractions.Text;
-            bool valid = controller.validDestinationUpdate(destinationName, location, cost, URL,attractions);
+
+            List<string> selectedAttractions = new List<string>();
+            foreach (var item in cblModifyAttractions.CheckedItems)
+            {
+                selectedAttractions.Add(item.ToString());
+            }
+            string selectedAttractionsStr = string.Join(",", selectedAttractions);
+            
+
+            bool valid = controller.validDestinationUpdate(destinationName, location, cost, URL, selectedAttractionsStr);
             if (valid)
             {
                 MessageBox.Show("Modified");
@@ -136,8 +155,8 @@ namespace Lab5
         private void cbxSearchDestination_SelectedIndexChanged(object sender, EventArgs e)
         {
             destinationController controller = new destinationController();
-            controller.validDestinationLoad(cbxSearchDestination.Text);
-            DataTable dataTable = new DataTable();
+            string destName = cbxSearchDestination.Text;
+            DataTable dataTable = controller.getDVG(destName);
             dgvSearchDestination.DataSource = dataTable;
             pbxDestinationPicture.SizeMode = PictureBoxSizeMode.Zoom;
             pbxDestinationPicture.Load(controller.getURL());
@@ -154,6 +173,11 @@ namespace Lab5
         }
 
         private void cbxModifyDestination_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

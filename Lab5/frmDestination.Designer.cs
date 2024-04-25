@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnlCreateDestination = new System.Windows.Forms.Panel();
+            this.cblCreateAttractions = new System.Windows.Forms.CheckedListBox();
+            this.lblAttractions = new System.Windows.Forms.Label();
             this.txtCreationURL = new System.Windows.Forms.TextBox();
             this.lblCreationURL = new System.Windows.Forms.Label();
             this.txtCreationCost = new System.Windows.Forms.TextBox();
@@ -40,6 +42,8 @@
             this.txtCreationName = new System.Windows.Forms.TextBox();
             this.lblCreationName = new System.Windows.Forms.Label();
             this.pnlModify = new System.Windows.Forms.Panel();
+            this.cblModifyAttractions = new System.Windows.Forms.CheckedListBox();
+            this.lblModifyAttractions = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.cbxModifyDestination = new System.Windows.Forms.ComboBox();
             this.txtModifyURL = new System.Windows.Forms.TextBox();
@@ -65,10 +69,6 @@
             this.destinationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lab5DBDataSet = new Lab5.lab5DBDataSet();
             this.destinationsTableAdapter = new Lab5.lab5DBDataSetTableAdapters.destinationsTableAdapter();
-            this.txtModifyAttractions = new System.Windows.Forms.TextBox();
-            this.lblModifyAttractions = new System.Windows.Forms.Label();
-            this.txtCreateAttractions = new System.Windows.Forms.TextBox();
-            this.lblAttractions = new System.Windows.Forms.Label();
             this.pnlCreateDestination.SuspendLayout();
             this.pnlModify.SuspendLayout();
             this.pnlSearch.SuspendLayout();
@@ -80,7 +80,7 @@
             // 
             // pnlCreateDestination
             // 
-            this.pnlCreateDestination.Controls.Add(this.txtCreateAttractions);
+            this.pnlCreateDestination.Controls.Add(this.cblCreateAttractions);
             this.pnlCreateDestination.Controls.Add(this.lblAttractions);
             this.pnlCreateDestination.Controls.Add(this.txtCreationURL);
             this.pnlCreateDestination.Controls.Add(this.lblCreationURL);
@@ -91,10 +91,34 @@
             this.pnlCreateDestination.Controls.Add(this.btnCreate);
             this.pnlCreateDestination.Controls.Add(this.txtCreationName);
             this.pnlCreateDestination.Controls.Add(this.lblCreationName);
-            this.pnlCreateDestination.Location = new System.Drawing.Point(162, 99);
+            this.pnlCreateDestination.Location = new System.Drawing.Point(162, 84);
             this.pnlCreateDestination.Name = "pnlCreateDestination";
             this.pnlCreateDestination.Size = new System.Drawing.Size(464, 266);
             this.pnlCreateDestination.TabIndex = 0;
+            // 
+            // cblCreateAttractions
+            // 
+            this.cblCreateAttractions.FormattingEnabled = true;
+            this.cblCreateAttractions.Items.AddRange(new object[] {
+            "Water sports",
+            "Snow boarding/Ski",
+            "Sand surfing",
+            "Hiking",
+            "Sightseeing"});
+            this.cblCreateAttractions.Location = new System.Drawing.Point(139, 132);
+            this.cblCreateAttractions.Name = "cblCreateAttractions";
+            this.cblCreateAttractions.Size = new System.Drawing.Size(172, 89);
+            this.cblCreateAttractions.TabIndex = 15;
+            this.cblCreateAttractions.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            // 
+            // lblAttractions
+            // 
+            this.lblAttractions.AutoSize = true;
+            this.lblAttractions.Location = new System.Drawing.Point(151, 113);
+            this.lblAttractions.Name = "lblAttractions";
+            this.lblAttractions.Size = new System.Drawing.Size(72, 16);
+            this.lblAttractions.TabIndex = 14;
+            this.lblAttractions.Text = "Attractions:";
             // 
             // txtCreationURL
             // 
@@ -146,7 +170,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(191, 213);
+            this.btnCreate.Location = new System.Drawing.Point(191, 229);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 2;
@@ -172,7 +196,7 @@
             // 
             // pnlModify
             // 
-            this.pnlModify.Controls.Add(this.txtModifyAttractions);
+            this.pnlModify.Controls.Add(this.cblModifyAttractions);
             this.pnlModify.Controls.Add(this.lblModifyAttractions);
             this.pnlModify.Controls.Add(this.btnDelete);
             this.pnlModify.Controls.Add(this.cbxModifyDestination);
@@ -190,9 +214,33 @@
             this.pnlModify.TabIndex = 9;
             this.pnlModify.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // cblModifyAttractions
+            // 
+            this.cblModifyAttractions.FormattingEnabled = true;
+            this.cblModifyAttractions.Items.AddRange(new object[] {
+            "Water sports",
+            "Snow boarding/Ski",
+            "Sand surfing",
+            "Hiking",
+            "Sightseeing"});
+            this.cblModifyAttractions.Location = new System.Drawing.Point(168, 146);
+            this.cblModifyAttractions.Name = "cblModifyAttractions";
+            this.cblModifyAttractions.Size = new System.Drawing.Size(172, 89);
+            this.cblModifyAttractions.TabIndex = 22;
+            // 
+            // lblModifyAttractions
+            // 
+            this.lblModifyAttractions.AutoSize = true;
+            this.lblModifyAttractions.Location = new System.Drawing.Point(197, 127);
+            this.lblModifyAttractions.Name = "lblModifyAttractions";
+            this.lblModifyAttractions.Size = new System.Drawing.Size(72, 16);
+            this.lblModifyAttractions.TabIndex = 20;
+            this.lblModifyAttractions.Text = "Attractions:";
+            this.lblModifyAttractions.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(333, 218);
+            this.btnDelete.Location = new System.Drawing.Point(333, 263);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 19;
@@ -259,7 +307,7 @@
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(168, 218);
+            this.btnModify.Location = new System.Drawing.Point(102, 263);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(75, 23);
             this.btnModify.TabIndex = 11;
@@ -322,7 +370,7 @@
             this.pnlSearch.Controls.Add(this.lblSearchDestination);
             this.pnlSearch.Controls.Add(this.cbxSearchDestination);
             this.pnlSearch.Controls.Add(this.dgvSearchDestination);
-            this.pnlSearch.Location = new System.Drawing.Point(735, 213);
+            this.pnlSearch.Location = new System.Drawing.Point(119, 87);
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(562, 342);
             this.pnlSearch.TabIndex = 16;
@@ -409,39 +457,6 @@
             // 
             this.destinationsTableAdapter.ClearBeforeFill = true;
             // 
-            // txtModifyAttractions
-            // 
-            this.txtModifyAttractions.Location = new System.Drawing.Point(200, 146);
-            this.txtModifyAttractions.Name = "txtModifyAttractions";
-            this.txtModifyAttractions.Size = new System.Drawing.Size(157, 22);
-            this.txtModifyAttractions.TabIndex = 21;
-            // 
-            // lblModifyAttractions
-            // 
-            this.lblModifyAttractions.AutoSize = true;
-            this.lblModifyAttractions.Location = new System.Drawing.Point(197, 127);
-            this.lblModifyAttractions.Name = "lblModifyAttractions";
-            this.lblModifyAttractions.Size = new System.Drawing.Size(72, 16);
-            this.lblModifyAttractions.TabIndex = 20;
-            this.lblModifyAttractions.Text = "Attractions:";
-            this.lblModifyAttractions.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // txtCreateAttractions
-            // 
-            this.txtCreateAttractions.Location = new System.Drawing.Point(154, 132);
-            this.txtCreateAttractions.Name = "txtCreateAttractions";
-            this.txtCreateAttractions.Size = new System.Drawing.Size(152, 22);
-            this.txtCreateAttractions.TabIndex = 15;
-            // 
-            // lblAttractions
-            // 
-            this.lblAttractions.AutoSize = true;
-            this.lblAttractions.Location = new System.Drawing.Point(151, 113);
-            this.lblAttractions.Name = "lblAttractions";
-            this.lblAttractions.Size = new System.Drawing.Size(72, 16);
-            this.lblAttractions.TabIndex = 14;
-            this.lblAttractions.Text = "Attractions:";
-            // 
             // frmDestination
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -493,7 +508,6 @@
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Label lblModifyDestination;
         private System.Windows.Forms.ComboBox cbxModifyDestination;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnCreatePage;
         private System.Windows.Forms.Button btnModifyPage;
         private System.Windows.Forms.Button btnSearchPage;
@@ -509,9 +523,10 @@
         private System.Windows.Forms.ComboBox cbxSearchDestination;
         private System.Windows.Forms.Label lblSearchDestination;
         private System.Windows.Forms.PictureBox pbxDestinationPicture;
-        private System.Windows.Forms.TextBox txtModifyAttractions;
         private System.Windows.Forms.Label lblModifyAttractions;
-        private System.Windows.Forms.TextBox txtCreateAttractions;
         private System.Windows.Forms.Label lblAttractions;
+        private System.Windows.Forms.CheckedListBox cblCreateAttractions;
+        private System.Windows.Forms.CheckedListBox cblModifyAttractions;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

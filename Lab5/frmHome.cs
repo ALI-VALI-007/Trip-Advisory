@@ -13,6 +13,16 @@ namespace Lab5
 {
     public partial class frmHome : Form
     {
+        private string curUsername;
+        public void setUser(string username)
+        {
+            curUsername = username;
+        }
+        /*public string usernameCheck
+        {
+            get { return curUsername; }  // Getter method
+            set { curUsername = value; }  // Setter method
+        }*/
         public frmHome()
         {
             InitializeComponent();
@@ -31,8 +41,17 @@ namespace Lab5
         private void btnDestinationPage_Click(object sender, EventArgs e)
         {
             frmDestination destinationPage = new frmDestination();
+            destinationPage.setUser(curUsername);
             this.Hide();
             destinationPage.Show();
+        }
+
+        private void btnReview_Click(object sender, EventArgs e)
+        {
+            frmReviews reviewPage = new frmReviews();
+            reviewPage.setUser(curUsername);
+            this.Hide();
+            reviewPage.Show();
         }
     }
 }

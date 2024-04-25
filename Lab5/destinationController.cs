@@ -18,7 +18,7 @@ namespace Lab5
         }
         public bool validDestinationSave(string destinationName, string location, string cost, string URL, string attractions) { 
             double costFloat = checkIfFloat(cost);
-            if (costFloat == -1.0 || validDestinationLoad(destinationName))
+            if (costFloat == -1.0 || !validDestinationLoad(destinationName))
             {
                 return false;
             }

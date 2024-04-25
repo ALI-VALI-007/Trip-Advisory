@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,27 +14,30 @@ namespace Lab5
         {//you can add stuff, i wouldnt
             curReview = null;
         }
-        public bool validReviewSave(string travelerName, string ratingStr, string comments)
+        public bool validReviewSave(string travelerName, string ratingStr, string comments, string dName)
         {
             int ratingInt = checkIfInt(ratingStr);
+
             if ( (travelerCheck(travelerName) == false) || ratingInt==-1 )
             {
                 return false;
             }
             Traveler curTraveler= null;
             curTraveler.loadTraveler(travelerName);
-            curReview = new Reviews(curTraveler, ratingInt, comments);
+            curReview.setRating(ratingInt);
+            curReview.setDName(dName);
+            curReview.setTraveler(curTraveler);
+            curReview.setComments(comments);
             curReview.saveReview();
             return true;
         }
 
-        public bool validReviewLoad(string travelerName) //Basically itll check if the textbox is valid int, then check if date is empty to see if the values loaded
+        public bool validReviewLoad(string destinationName) //Basically itll check if the textbox is valid int, then check if date is empty to see if the values loaded
         {
-            curReview.loadReview(travelerName);
+            this.curReview.loadReview(destinationName);
             int rating = curReview.getRating();
             if (rating > 0)
             {
-                this.curReview.loadReview(travelerName);
                 return true;
             }
             return false;
@@ -48,16 +52,21 @@ namespace Lab5
             }
             return false;
         }
-        public bool validReviewUpdate(string travelerName, string ratingStr, string comments)
+        public bool validReviewUpdate(string id,string travelerName, string ratingStr, string comments, string dName)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
             int ratingInt= checkIfInt(ratingStr);
+            int idInt = checkIfInt(id);
             if (travelerCheck(travelerName)==false && ratingInt!=0)
             {
                 return false;
             }
             Traveler curTraveler = null;
             curTraveler.loadTraveler(travelerName);
-            curReview = new Reviews(curTraveler, ratingInt, comments);
+            curReview.setRating(ratingInt);
+            curReview.setDName(dName);
+            curReview.setTraveler(curTraveler);
+            curReview.setComments(comments);
+            curReview.setId(idInt);
             curReview.updateReview();
             return true;
         }
@@ -90,6 +99,12 @@ namespace Lab5
                 result.Add(loopReview.getString());
             }
             return result;
+        }
+        public DataTable getDVG(string destinationName)
+        {
+            DataTable dt = new DataTable();
+            dt = curReview.loadDGV(destinationName);
+            return dt;
         }
     }
 }

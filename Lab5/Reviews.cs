@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using System.Text;
@@ -34,14 +35,38 @@ namespace Lab5
     public class Reviews
     {
         OleDbConnection myConnection;
+        int id;
         Traveler traveler;
         int rating;
         string comments;
-        public Reviews(Traveler traveler,int rating,string comments)
+        string dName;
+        public Reviews(int id,Traveler traveler,int rating,string comments, string dName)
         {
+            this.id = id;
             this.traveler = traveler;
             this.rating = rating;
             this.comments = comments;
+            this.dName = dName;
+        }
+        public void setTraveler(Traveler traveler)
+        {
+            this.traveler=traveler;
+        }
+        public void setRating(int rating)
+        {
+            this.rating = rating;
+        }
+        public void setId(int id)
+        {
+            this.id = id;
+        }
+        public void setComments(string comments)
+        {
+            this.comments=comments;
+        }
+        public void setDName(string dName)
+        {
+            this.dName=dName;
         }
         public int getRating() 
         {
@@ -56,13 +81,15 @@ namespace Lab5
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
 
-            String query = "INSERT INTO reviews ([travelerName], [rating], [comments]) " +
-                           "VALUES (@travelerName, @rating, @comments)";
+            String query = "INSERT INTO reviews ([id], [travelerName], [rating], [comments], [dName] ) " +
+                           "VALUES (@id, @travelerName, @rating, @comments, @dName)";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
-
+            this.id = findReviewID();
+            cmd.Parameters.AddWithValue("@id", this.id);
             cmd.Parameters.AddWithValue("@travelerName", this.traveler.getName());
             cmd.Parameters.AddWithValue("@rating", this.rating);
             cmd.Parameters.AddWithValue("@comments", this.comments);
+            cmd.Parameters.AddWithValue("@dName", this.dName);
 
             cmd.ExecuteNonQuery();
             myConnection.Close();
@@ -72,7 +99,7 @@ namespace Lab5
 
             string query = "SELECT * " +
               "FROM reviews " +
-              "WHERE [travelerName] = @travelerName";
+              "WHERE [dName] = @dName";
 
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
@@ -85,6 +112,7 @@ namespace Lab5
                 this.traveler.loadTraveler(nameSearch);
                 this.rating = reader.GetInt32(reader.GetOrdinal("rating"));
                 this.comments = reader.GetString(reader.GetOrdinal("comments"));
+                this.dName = reader.GetString(reader.GetOrdinal("dName"));
             }
             reader.Close();
             myConnection.Close();
@@ -110,13 +138,17 @@ namespace Lab5
             String query = "UPDATE reviews SET " +
               "[rating] = @rating, " +
               "[comments] = @comments, " +
-              "WHERE [travelerName] = @travelerName";
+              "[travelerName] = @travelerName " +
+              "[dName] = @dName " +
+              "WHERE [id] = @id";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
             // Add parameters with values
             cmd.Parameters.AddWithValue("@rating", this.rating);
             cmd.Parameters.AddWithValue("@comments", this.comments);
             cmd.Parameters.AddWithValue("@travelerName", this.traveler.getName());
+            cmd.Parameters.AddWithValue("@dName", this.dName);
+            cmd.Parameters.AddWithValue("@id", this.id);
 
             //execute
             cmd.ExecuteNonQuery();
@@ -135,15 +167,52 @@ namespace Lab5
             OleDbDataReader reader = cmd.ExecuteReader();
             foreach (var row in reader)
             {
-                this.traveler.setTravelerName( reader.GetString(reader.GetOrdinal("travelerName")) );
+                this.id = reader.GetInt32(reader.GetOrdinal("id"));
+                this.traveler.loadTraveler( reader.GetString(reader.GetOrdinal("travelerName")) );
                 this.rating = reader.GetInt32(reader.GetOrdinal("rating"));
                 this.comments = reader.GetString(reader.GetOrdinal("comments"));
-                Reviews newReview = new Reviews(traveler, rating, comments);
+                this.dName = reader.GetString(reader.GetOrdinal("dName"));
+                Reviews newReview = new Reviews(id, traveler, rating, comments, dName);
                 list.Add(newReview);
             }
             reader.Close();
             myConnection.Close();
             return list;
         }
+        public int findReviewID()
+        {
+            int result = 0;
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection.Open();
+
+            string query = "SELECT * FROM reviews;";
+            OleDbCommand cmd = new OleDbCommand(query, myConnection);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            foreach (var row in reader)
+            {
+                result++;
+            }
+            reader.Close();
+            return result + 1;
+        }
+        public DataTable loadDGV(string destinationName)
+        {
+
+            string query = "SELECT * " +
+                            "FROM  reviews " +
+                            "WHERE [destinationName] = @destinationName";
+
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection.Open();
+            OleDbCommand cmd = new OleDbCommand(query, myConnection);
+            cmd.Parameters.AddWithValue("@destinationName", destinationName);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            DataTable dataTable = new DataTable();
+            dataTable.Load(reader);
+            reader.Close();
+            myConnection.Close();
+            return dataTable;
+        }
+
     }
 }

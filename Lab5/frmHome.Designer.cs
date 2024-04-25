@@ -30,6 +30,7 @@
         {
             this.btnLoginSettings = new System.Windows.Forms.Button();
             this.btnDestinationPage = new System.Windows.Forms.Button();
+            this.btnReview = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLoginSettings
@@ -52,11 +53,22 @@
             this.btnDestinationPage.UseVisualStyleBackColor = true;
             this.btnDestinationPage.Click += new System.EventHandler(this.btnDestinationPage_Click);
             // 
+            // btnReview
+            // 
+            this.btnReview.Location = new System.Drawing.Point(283, 32);
+            this.btnReview.Name = "btnReview";
+            this.btnReview.Size = new System.Drawing.Size(127, 49);
+            this.btnReview.TabIndex = 2;
+            this.btnReview.Text = "Review Management";
+            this.btnReview.UseVisualStyleBackColor = true;
+            this.btnReview.Click += new System.EventHandler(this.btnReview_Click);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnReview);
             this.Controls.Add(this.btnDestinationPage);
             this.Controls.Add(this.btnLoginSettings);
             this.Name = "frmHome";
@@ -70,6 +82,7 @@
 
         private System.Windows.Forms.Button btnLoginSettings;
         private System.Windows.Forms.Button btnDestinationPage;
+        private System.Windows.Forms.Button btnReview;
     }
 }
 

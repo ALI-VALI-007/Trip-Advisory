@@ -125,6 +125,7 @@ namespace Lab5
         private void btnHome_Click(object sender, EventArgs e)
         {
             frmHome homePage = new frmHome();
+            homePage.setUser(curUserName);
             this.Hide();
             homePage.Show();
         }

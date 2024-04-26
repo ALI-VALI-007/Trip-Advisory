@@ -31,6 +31,7 @@
             this.btnLoginSettings = new System.Windows.Forms.Button();
             this.btnDestinationPage = new System.Windows.Forms.Button();
             this.btnReview = new System.Windows.Forms.Button();
+            this.btnTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLoginSettings
@@ -63,11 +64,22 @@
             this.btnReview.UseVisualStyleBackColor = true;
             this.btnReview.Click += new System.EventHandler(this.btnReview_Click);
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(570, 336);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 3;
+            this.btnTest.Text = "btnTest";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnReview);
             this.Controls.Add(this.btnDestinationPage);
             this.Controls.Add(this.btnLoginSettings);
@@ -83,6 +95,7 @@
         private System.Windows.Forms.Button btnLoginSettings;
         private System.Windows.Forms.Button btnDestinationPage;
         private System.Windows.Forms.Button btnReview;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

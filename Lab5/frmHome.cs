@@ -53,6 +53,12 @@ namespace Lab5
             this.Hide();
             reviewPage.Show();
         }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            tripController controller = new tripController();
+            controller.sendEmail("works", "");
+        }
     }
 }
 

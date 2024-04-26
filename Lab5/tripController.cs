@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Net;
+using System.Net.Mime;
+using Microsoft.Office.Interop.Excel;
+using _excel = Microsoft.Office.Interop.Excel;
 
 namespace Lab5
 {
@@ -54,7 +59,7 @@ namespace Lab5
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
             int tripIdInt = checkIfInt(idNumber);
             double additionalCostFloat = checkIfFloat(additionalCost);
-            if ( additionalCostFloat == -1.0 || tripIdInt == -1 || !validTripLoad(idNumber) || destinationCheck(destination)==false )
+            if ( additionalCostFloat == -1.0 || tripIdInt == -1 || !validTripLoad(idNumber) || !destinationCheck(destination)==false )
             {
                 return false;
             }
@@ -105,6 +110,26 @@ namespace Lab5
         public string getRecipt()
         {
             return this.curTrip.getString();
+        }
+
+        public void sendEmail(string userEmail, string filePath)
+        {
+            string content = "Thank you for booking the trip. Your total is: " +this.curTrip.getCost();
+            var smtpClient = new SmtpClient("smtp.gmail.com", 587);
+            smtpClient.Credentials = new NetworkCredential("componentdesignemail@gmail.com", "elue smxq alop ykbi");//feel free to use this email
+            smtpClient.EnableSsl = true;
+
+            // from, to, subject, content
+            var message = new MailMessage("componentdesignemail@gmail.com", "alisvali007@gmail.com", "Lab 5: Reciept", content);
+
+            var attachment = new Attachment("reciept.xlsx", MediaTypeNames.Application.Octet);
+            message.Attachments.Add(attachment);
+
+            smtpClient.Send(message);
+        }
+        public void makeExcel()
+        {
+            var excelApp = new excel.Application;
         }
     }
 }

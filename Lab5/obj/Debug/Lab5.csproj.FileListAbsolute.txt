@@ -12,3 +12,4 @@ C:\Users\12674\lab5\Lab5\obj\Debug\Lab5.pdb
 C:\Users\12674\lab5\Lab5\obj\Debug\Lab5.frmHome.resources
 C:\Users\12674\lab5\Lab5\obj\Debug\Lab5.frmDestination.resources
 C:\Users\12674\lab5\Lab5\obj\Debug\Lab5.frmReviews.resources
+C:\Users\12674\lab5\Lab5\obj\Debug\Lab5.csproj.ResolveComReference.cache

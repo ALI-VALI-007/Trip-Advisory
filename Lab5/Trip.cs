@@ -45,6 +45,9 @@ namespace Lab5
         string status;
         string careTaker;
         string dateOver;
+        //None,txt,none,none,cbx,txt,none,none,txt,txt
+        //cbx,txt,none,none,cbx,txt,none,cbx,txt,txt
+        //cbx-for destination
         public Trip(int idNumber,string dateMade, string activities, string accomendations, string destination, double additionalCost, string tName, string status, string careTaker, string dateOver)
         {
             this.idNumber = idNumber;
@@ -76,7 +79,7 @@ namespace Lab5
         }
         public void saveTrip()
         {
-            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source   =lab5DB.accdb;");
             myConnection.Open();
 
             String query = "INSERT INTO trips ([idNumber], [dateMade], [activities], [accomedations], [destination], [additionalCost], [tName], [status], [careTaker], [dateOver]) " +
@@ -121,7 +124,6 @@ namespace Lab5
                 this.status = reader.GetString(reader.GetOrdinal("status"));
                 this.careTaker = reader.GetString(reader.GetOrdinal("careTaker"));
                 this.dateOver = reader.GetString(reader.GetOrdinal("dateOver"));
-
             }
             reader.Close();
             myConnection.Close();

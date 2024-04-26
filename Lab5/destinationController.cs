@@ -94,5 +94,9 @@ namespace Lab5
         {
             return this.curDestinaton.getURL();
         }
+        public string getActivities()
+        {
+            return this.curDestinaton.getAttractions();
+        }
     }
 }

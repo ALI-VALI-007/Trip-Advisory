@@ -98,5 +98,13 @@ namespace Lab5
             }
             return result;
         }
+        public string getAccomedations()
+        {
+            return this.curTraveler.getPreferences();
+        }
+        public string getEmail()
+        {
+            return this.curTraveler.getEmail();
+        }
     }
 }

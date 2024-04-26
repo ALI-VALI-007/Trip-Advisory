@@ -56,6 +56,10 @@ namespace Lab5
             this.preferences = preferences;
             this.password = password;
         }
+        public string getEmail()
+        {
+            return this.contactDetails;
+        }
         public string getString()
         {
             return this.nameTraveler + "," + this.contactDetails + "," + this.preferences;

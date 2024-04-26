@@ -16,17 +16,18 @@ namespace Lab5
         Trip curTrip;
         public tripController()
         {//you can add stuff, i wouldnt
-            curTrip = null;
+            curTrip = new Trip(-1,"","","","",-1.0,"","","","");
         }
-        public bool validTripSave(string idNumber, string dateMade, string activities, string accomendations, string destination, string additionalCost, string tName, string status, string careTaker, string dateOver)
+        public bool validTripSave(string dateMade, string activities, string accomendations, string destination, string additionalCost, string tName, string status, string careTaker, string dateOver)
         {
-            int tripIdInt = checkIfInt(idNumber);
             double additionalCostFloat = checkIfFloat(additionalCost);
-            if (additionalCostFloat == -1.0 || tripIdInt == -1 || (validTripLoad(idNumber) == false) )
+
+            if (additionalCostFloat == -1.0 )
             {
                 return false;
             }
-            curTrip = new Trip(tripIdInt,dateMade, activities,accomendations,destination,additionalCostFloat, tName, status, careTaker, dateOver);
+            
+            curTrip = new Trip(-1,dateMade, activities,accomendations,destination,additionalCostFloat, tName, status, careTaker, dateOver);
             curTrip.saveTrip();
             return true;
         }
@@ -112,8 +113,11 @@ namespace Lab5
             return this.curTrip.getString();
         }
 
-        public void sendEmail(string userEmail, string filePath)
+        public void sendEmail(string username/*, string filePath*/)
         {
+            travelerController controller = new travelerController();
+            controller.validTravelerLoad(username);
+            controller.getEmail();
             string content = "Thank you for booking the trip. Your total is: " +this.curTrip.getCost();
             var smtpClient = new SmtpClient("smtp.gmail.com", 587);
             smtpClient.Credentials = new NetworkCredential("componentdesignemail@gmail.com", "elue smxq alop ykbi");//feel free to use this email

@@ -47,7 +47,7 @@
             // 
             // btnDestinationPage
             // 
-            this.btnDestinationPage.Location = new System.Drawing.Point(463, 32);
+            this.btnDestinationPage.Location = new System.Drawing.Point(449, 32);
             this.btnDestinationPage.Name = "btnDestinationPage";
             this.btnDestinationPage.Size = new System.Drawing.Size(127, 49);
             this.btnDestinationPage.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // btnReview
             // 
-            this.btnReview.Location = new System.Drawing.Point(283, 32);
+            this.btnReview.Location = new System.Drawing.Point(243, 32);
             this.btnReview.Name = "btnReview";
             this.btnReview.Size = new System.Drawing.Size(127, 49);
             this.btnReview.TabIndex = 2;
@@ -77,7 +77,7 @@
             // 
             // btnTrip
             // 
-            this.btnTrip.Location = new System.Drawing.Point(85, 32);
+            this.btnTrip.Location = new System.Drawing.Point(58, 32);
             this.btnTrip.Name = "btnTrip";
             this.btnTrip.Size = new System.Drawing.Size(114, 49);
             this.btnTrip.TabIndex = 4;

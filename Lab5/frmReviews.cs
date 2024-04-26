@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Lab5
 {
@@ -29,8 +30,7 @@ namespace Lab5
 
         private void frmReviews_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'lab5DBDataSet.reviews' table. You can move, or remove it, as needed.
-            this.reviewsTableAdapter.Fill(this.lab5DBDataSet.reviews);
+  
 
         }
 
@@ -69,14 +69,101 @@ namespace Lab5
             string rating = txtModifyRating.Text;
             string comments = txtModifyComments.Text;
             string id = cbxReviewID.Text;
-            controller.validReviewUpdate(id,curUsername,rating,comments,destination);
+            bool status=controller.validReviewUpdate(id,curUsername,rating,comments,destination);
+
+            if (status)
+            {
+                MessageBox.Show("Deleted");
+            }
+            else
+            {
+                MessageBox.Show("Not deleted");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             reviewsController controller = new reviewsController();
             string id = cbxReviewID.Text;
-            controller.validReviewDelete(id);
+            bool status =controller.validReviewDelete(id);
+            if (status)
+            {
+                MessageBox.Show("Deleted");
+            }
+            else
+            {
+                MessageBox.Show("Not deleted");
+            }
+        }
+
+        private void btnSearchPage_Click(object sender, EventArgs e)
+        {
+            pnlCreateReview.Visible = false;
+            pnlModifyReview.Visible = false;
+            pnlSearch.Visible = true;
+
+            destinationController controller = new destinationController();
+            cbxSearchReview.Items.Clear();
+            List<string> destinationNames = controller.getDestinationList();
+            foreach (string curName in destinationNames)
+            {
+                //MessageBox.Show(curName);
+                cbxSearchReview.Items.Add(curName);
+            }
+        }
+
+        private void btnModifyPage_Click(object sender, EventArgs e)
+        {
+            pnlCreateReview.Visible = false;
+            pnlModifyReview.Visible = true;
+            pnlSearch.Visible = false;
+
+            destinationController controller = new destinationController();
+            cbxModifyDestination.Items.Clear();
+            List<string> destinationNames = controller.getDestinationList();
+            foreach (string curName in destinationNames)
+            {
+                //MessageBox.Show(curName);
+                cbxModifyDestination.Items.Add(curName);
+            }
+
+            reviewsController controllerR = new reviewsController();
+            cbxReviewID.Items.Clear();
+            List<string> reviewIDs = controllerR.getReviewsList();
+            foreach (string curName in reviewIDs)
+            {
+                //MessageBox.Show(curName);
+                cbxReviewID.Items.Add(curName);
+            }
+        }
+
+        private void btnCreatePage_Click(object sender, EventArgs e)
+        {
+            pnlCreateReview.Visible = true;
+            pnlModifyReview.Visible = false;
+            pnlSearch.Visible = false;
+
+            destinationController controller = new destinationController();
+            cbxCreateDestination.Items.Clear();
+            List<string> destinationNames = controller.getDestinationList();
+            foreach (string curName in destinationNames)
+            {
+                //MessageBox.Show(curName);
+                cbxCreateDestination.Items.Add(curName);
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            frmHome homePage = new frmHome();
+            homePage.setUser(curUsername);
+            this.Hide();
+            homePage.Show();
+        }
+
+        private void dgvReview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

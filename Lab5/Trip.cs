@@ -102,13 +102,13 @@ namespace Lab5
             this.idNumber = nameSearch;
             string query = "SELECT * " +
               "FROM trips " +
-            "WHERE [idNumber] = @idNumber";
+            "WHERE [tName] = @tName";
 
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
-            cmd.Parameters.AddWithValue("@idNumber", nameSearch);
+            cmd.Parameters.AddWithValue("@tName", nameSearch);
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {

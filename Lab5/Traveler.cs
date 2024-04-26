@@ -91,7 +91,7 @@ namespace Lab5
         }
         public void loadTraveler(string nameSearch)
         {
-            this.nameTraveler = nameSearch;
+            //this.nameTraveler = nameSearch;
             string query = "SELECT * " +
               "FROM traveler " +
               "WHERE [nameTraveler] = @nameTraveler";

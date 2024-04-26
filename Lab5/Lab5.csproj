@@ -83,6 +83,12 @@
     <Compile Include="frmReviews.Designer.cs">
       <DependentUpon>frmReviews.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTrip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTrip.Designer.cs">
+      <DependentUpon>frmTrip.cs</DependentUpon>
+    </Compile>
     <Compile Include="lab5DBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReviews.resx">
       <DependentUpon>frmReviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTrip.resx">
+      <DependentUpon>frmTrip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

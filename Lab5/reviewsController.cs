@@ -12,7 +12,8 @@ namespace Lab5
         Reviews curReview;
         public reviewsController()
         {//you can add stuff, i wouldnt
-            curReview = null;
+            Traveler traveler = new Traveler("", "", "", "");
+            curReview = new Reviews(-1,traveler,-1,"","");
         }
         public bool validReviewSave(string travelerName, string ratingStr, string comments, string dName)
         {
@@ -22,19 +23,18 @@ namespace Lab5
             {
                 return false;
             }
-            Traveler curTraveler= null;
-            curTraveler.loadTraveler(travelerName);
+            Traveler traveler = new Traveler("", "", "", "");
+            traveler.loadTraveler(travelerName);
             curReview.setRating(ratingInt);
             curReview.setDName(dName);
-            curReview.setTraveler(curTraveler);
+            curReview.setTraveler(traveler);
             curReview.setComments(comments);
             curReview.saveReview();
             return true;
         }
-
-        public bool validReviewLoad(string destinationName) //Basically itll check if the textbox is valid int, then check if date is empty to see if the values loaded
+        public bool validReviewLoad(string name) //Basically itll check if the textbox is valid int, then check if date is empty to see if the values loaded
         {
-            this.curReview.loadReview(destinationName);
+            this.curReview.loadReview(name);
             int rating = curReview.getRating();
             if (rating > 0)
             {
@@ -42,12 +42,24 @@ namespace Lab5
             }
             return false;
         }
-        public bool validReviewDelete(string travelerName) //Its gonna check if txtbx valid, then try to load it.if it can then we can delete it
+        public bool validReviewLoadId(string id) //Basically itll check if the textbox is valid int, then check if date is empty to see if the values loaded
         {
-            bool loadBool = validReviewLoad(travelerName);
-            if (loadBool) //if it did load then that means that it is a real entry and we can then delete it
+            int idInt = checkIfInt(id);
+            this.curReview.loadReviewId(idInt);
+            int rating = curReview.getRating();
+            if (rating > 0)
             {
-                this.curReview.deleteReview(travelerName);
+                return true;
+            }
+            return false;
+        }
+        public bool validReviewDelete(string id) //Its gonna check if txtbx valid, then try to load it.if it can then we can delete it
+        {
+            int idInt = checkIfInt(id);
+            bool loadBool = validReviewLoadId(id);
+            if ( loadBool ) //if it did load then that means that it is a real entry and we can then delete it
+            {
+                this.curReview.deleteReview(idInt);
                 return true;
             }
             return false;
@@ -81,7 +93,7 @@ namespace Lab5
         }
         private bool travelerCheck(string travelerName)
         {
-            Traveler traveler = null;
+            Traveler traveler = new Traveler("","","","");
             traveler.loadTraveler(travelerName);
             string  preferences = traveler.getPreferences();
             if (preferences == "")
@@ -93,12 +105,17 @@ namespace Lab5
         public List<string> getReviewsList()
         {
             List<Reviews> reviewList= curReview.loadAllReviews();
-            List<string> result = new List<string>();
+            List<int> result = new List<int>();
             foreach(Reviews loopReview in reviewList)
             {
-                result.Add(loopReview.getString());
+                result.Add(loopReview.getId());
             }
-            return result;
+            List<string> strings = new List<string>();
+            foreach(int x in result)
+            {
+                strings.Add( x.ToString() );
+            }
+            return strings;
         }
         public DataTable getDVG(string destinationName)
         {

@@ -35,11 +35,12 @@
             this.travelerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ratingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reviewsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reviewsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.lab5DBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lab5DBDataSet = new Lab5.lab5DBDataSet();
             this.lblSearchReview = new System.Windows.Forms.Label();
             this.cbxSearchReview = new System.Windows.Forms.ComboBox();
+            this.reviewsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnHome = new System.Windows.Forms.Button();
             this.btnSearchPage = new System.Windows.Forms.Button();
             this.btnModifyPage = new System.Windows.Forms.Button();
@@ -67,9 +68,10 @@
             this.pnlSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxReview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reviewsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reviewsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lab5DBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lab5DBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reviewsBindingSource)).BeginInit();
             this.pnlCreateReview.SuspendLayout();
             this.pnlModifyReview.SuspendLayout();
             this.SuspendLayout();
@@ -101,13 +103,14 @@
             this.travelerNameDataGridViewTextBoxColumn,
             this.ratingDataGridViewTextBoxColumn,
             this.commentsDataGridViewTextBoxColumn});
-            this.dgvReview.DataSource = this.reviewsBindingSource;
-            this.dgvReview.Location = new System.Drawing.Point(59, 64);
+            this.dgvReview.DataSource = this.reviewsBindingSource1;
+            this.dgvReview.Location = new System.Drawing.Point(12, 62);
             this.dgvReview.Name = "dgvReview";
             this.dgvReview.RowHeadersWidth = 51;
             this.dgvReview.RowTemplate.Height = 24;
-            this.dgvReview.Size = new System.Drawing.Size(427, 199);
+            this.dgvReview.Size = new System.Drawing.Size(550, 199);
             this.dgvReview.TabIndex = 21;
+            this.dgvReview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReview_CellContentClick);
             // 
             // travelerNameDataGridViewTextBoxColumn
             // 
@@ -133,10 +136,10 @@
             this.commentsDataGridViewTextBoxColumn.Name = "commentsDataGridViewTextBoxColumn";
             this.commentsDataGridViewTextBoxColumn.Width = 125;
             // 
-            // reviewsBindingSource
+            // reviewsBindingSource1
             // 
-            this.reviewsBindingSource.DataMember = "reviews";
-            this.reviewsBindingSource.DataSource = this.lab5DBDataSetBindingSource;
+            this.reviewsBindingSource1.DataMember = "reviews";
+            this.reviewsBindingSource1.DataSource = this.lab5DBDataSetBindingSource;
             // 
             // lab5DBDataSetBindingSource
             // 
@@ -166,6 +169,11 @@
             this.cbxSearchReview.TabIndex = 18;
             this.cbxSearchReview.SelectedIndexChanged += new System.EventHandler(this.cbxSearchReview_SelectedIndexChanged);
             // 
+            // reviewsBindingSource
+            // 
+            this.reviewsBindingSource.DataMember = "reviews";
+            this.reviewsBindingSource.DataSource = this.lab5DBDataSetBindingSource;
+            // 
             // btnHome
             // 
             this.btnHome.Location = new System.Drawing.Point(687, 378);
@@ -174,6 +182,7 @@
             this.btnHome.TabIndex = 22;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnSearchPage
             // 
@@ -183,6 +192,7 @@
             this.btnSearchPage.TabIndex = 21;
             this.btnSearchPage.Text = "Search Page";
             this.btnSearchPage.UseVisualStyleBackColor = true;
+            this.btnSearchPage.Click += new System.EventHandler(this.btnSearchPage_Click);
             // 
             // btnModifyPage
             // 
@@ -192,6 +202,7 @@
             this.btnModifyPage.TabIndex = 20;
             this.btnModifyPage.Text = "Modify/Delete Page";
             this.btnModifyPage.UseVisualStyleBackColor = true;
+            this.btnModifyPage.Click += new System.EventHandler(this.btnModifyPage_Click);
             // 
             // btnCreatePage
             // 
@@ -201,6 +212,7 @@
             this.btnCreatePage.TabIndex = 19;
             this.btnCreatePage.Text = "Create Page";
             this.btnCreatePage.UseVisualStyleBackColor = true;
+            this.btnCreatePage.Click += new System.EventHandler(this.btnCreatePage_Click);
             // 
             // pnlCreateReview
             // 
@@ -402,9 +414,10 @@
             this.pnlSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxReview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reviewsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reviewsBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lab5DBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lab5DBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reviewsBindingSource)).EndInit();
             this.pnlCreateReview.ResumeLayout(false);
             this.pnlCreateReview.PerformLayout();
             this.pnlModifyReview.ResumeLayout(false);
@@ -450,5 +463,6 @@
         private System.Windows.Forms.Label lblModifyReviewId;
         private System.Windows.Forms.ComboBox cbxModifyDestination;
         private System.Windows.Forms.Label lblModifyReview;
+        private System.Windows.Forms.BindingSource reviewsBindingSource1;
     }
 }

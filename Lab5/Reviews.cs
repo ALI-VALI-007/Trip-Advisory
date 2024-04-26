@@ -48,6 +48,10 @@ namespace Lab5
             this.comments = comments;
             this.dName = dName;
         }
+        public int getId()
+        {
+            return id;
+        }
         public void setTraveler(Traveler traveler)
         {
             this.traveler=traveler;
@@ -94,6 +98,30 @@ namespace Lab5
             cmd.ExecuteNonQuery();
             myConnection.Close();
         }
+        public void loadReviewId(int id)
+        {
+
+            string query = "SELECT * " +
+              "FROM reviews " +
+              "WHERE [id] = @id";
+
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection.Open();
+            OleDbCommand cmd = new OleDbCommand(query, myConnection);
+
+            cmd.Parameters.AddWithValue("@id", id);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string x = reader.GetString(reader.GetOrdinal("travelerName"));
+                this.traveler.loadTraveler(x);
+                this.rating = reader.GetInt32(reader.GetOrdinal("rating"));
+                this.comments = reader.GetString(reader.GetOrdinal("comments"));
+                this.dName = reader.GetString(reader.GetOrdinal("dName"));
+            }
+            reader.Close();
+            myConnection.Close();
+        }
         public void loadReview(string nameSearch)
         {
 
@@ -105,11 +133,12 @@ namespace Lab5
             myConnection.Open();
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
-            cmd.Parameters.AddWithValue("@travelerName", nameSearch);
+            cmd.Parameters.AddWithValue("@dName", nameSearch);
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                this.traveler.loadTraveler(nameSearch);
+                string x = reader.GetString(reader.GetOrdinal("travelerName"));
+                this.traveler.loadTraveler(x);
                 this.rating = reader.GetInt32(reader.GetOrdinal("rating"));
                 this.comments = reader.GetString(reader.GetOrdinal("comments"));
                 this.dName = reader.GetString(reader.GetOrdinal("dName"));
@@ -117,15 +146,15 @@ namespace Lab5
             reader.Close();
             myConnection.Close();
         }
-        public void deleteReview(string name)
+        public void deleteReview(int id)
         {
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
-            String query = "DELETE FROM reviews WHERE [travelerName] = @travelerName";
+            String query = "DELETE FROM reviews WHERE [id] = @id";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
             // Add parameters with values
-            cmd.Parameters.AddWithValue("@travelerName", name);
+            cmd.Parameters.AddWithValue("@id", id);
 
             //execute
             cmd.ExecuteNonQuery();
@@ -168,7 +197,8 @@ namespace Lab5
             foreach (var row in reader)
             {
                 this.id = reader.GetInt32(reader.GetOrdinal("id"));
-                this.traveler.loadTraveler( reader.GetString(reader.GetOrdinal("travelerName")) );
+                string x = reader.GetString(reader.GetOrdinal("travelerName"));
+                this.traveler.loadTraveler(x);
                 this.rating = reader.GetInt32(reader.GetOrdinal("rating"));
                 this.comments = reader.GetString(reader.GetOrdinal("comments"));
                 this.dName = reader.GetString(reader.GetOrdinal("dName"));

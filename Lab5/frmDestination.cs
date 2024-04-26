@@ -110,6 +110,7 @@ namespace Lab5
         private void btnHome_Click(object sender, EventArgs e)
         {
             frmHome homePage = new frmHome();
+            homePage.setUser(curUsername);
             this.Hide();
             homePage.Show();
         }
@@ -158,6 +159,8 @@ namespace Lab5
             string destName = cbxSearchDestination.Text;
             DataTable dataTable = controller.getDVG(destName);
             dgvSearchDestination.DataSource = dataTable;
+
+            controller.validDestinationLoad(destName);
             pbxDestinationPicture.SizeMode = PictureBoxSizeMode.Zoom;
             pbxDestinationPicture.Load(controller.getURL());
         }

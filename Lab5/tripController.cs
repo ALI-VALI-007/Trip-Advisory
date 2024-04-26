@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
 using System.Net.Mime;
-using Microsoft.Office.Interop.Excel;
-using _excel = Microsoft.Office.Interop.Excel;
+/*using Microsoft.Office.Interop.Excel;
+using _excel = Microsoft.Office.Interop.Excel;*/
 
 namespace Lab5
 {
@@ -122,14 +122,14 @@ namespace Lab5
             // from, to, subject, content
             var message = new MailMessage("componentdesignemail@gmail.com", "alisvali007@gmail.com", "Lab 5: Reciept", content);
 
-            var attachment = new Attachment("reciept.xlsx", MediaTypeNames.Application.Octet);
-            message.Attachments.Add(attachment);
+            //var attachment = new Attachment("reciept.xlsx", MediaTypeNames.Application.Octet);
+            //message.Attachments.Add(attachment);
 
             smtpClient.Send(message);
         }
-        public void makeExcel()
+        /*public void makeExcel()
         {
             var excelApp = new excel.Application;
-        }
+        }*/
     }
 }

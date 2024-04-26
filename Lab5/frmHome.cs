@@ -59,6 +59,14 @@ namespace Lab5
             tripController controller = new tripController();
             controller.sendEmail("works", "");
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            frmTrip tripPage = new frmTrip();
+            tripPage.setUser(curUsername);
+            this.Hide();
+            tripPage.Show();
+        }
     }
 }
 

@@ -156,6 +156,13 @@ namespace Lab5
 
         private void cbxSearchDestination_SelectedIndexChanged(object sender, EventArgs e)
         {
+            List<string> selectedAttractions = new List<string>();
+            foreach (var item in cblModifyAttractions.CheckedItems)
+            {
+                selectedAttractions.Add(item.ToString());
+            }
+            string selectedAttractionsStr = string.Join(",", selectedAttractions);
+
             destinationController controller = new destinationController();
             string destName = cbxSearchDestination.Text;
             DataTable dataTable = controller.getDVG(destName);
@@ -190,6 +197,65 @@ namespace Lab5
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void clbFilterActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<string> selectedAttractions = new List<string>();
+            foreach (var item in clbFilterActivities.CheckedItems)
+            {
+                selectedAttractions.Add(item.ToString());
+            }
+            string selectedAttractionsStr = string.Join(",", selectedAttractions);
+
+            destinationController controller = new destinationController();
+            string destName = cbxSearchDestination.Text;
+            DataTable dataTable = controller.getDVG(destName);
+            dgvSearchDestination.DataSource = dataTable;
+
+            controller.validDestinationLoad(destName);
+            pbxDestinationPicture.SizeMode = PictureBoxSizeMode.Zoom;
+            try
+            {
+                pbxDestinationPicture.Load(controller.getURL());
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void txtPriceFilter_TextChanged(object sender, EventArgs e)
+        {
+            List<string> selectedAttractions = new List<string>();
+            foreach (var item in cblModifyAttractions.CheckedItems)
+            {
+                selectedAttractions.Add(item.ToString());
+            }
+            string selectedAttractionsStr = string.Join(",", selectedAttractions);
+
+            string destName = cbxSearchDestination.Text;
+
+            string priceFilter = txtPriceFilter.Text;
+
+            destinationController controller = new destinationController();
+
+            DataTable dataTable = controller.filterDVG(priceFilter,destName,selectedAttractionsStr);
+            dgvSearchDestination.DataSource = dataTable;
+
+            controller.validDestinationLoad(destName);
+            pbxDestinationPicture.SizeMode = PictureBoxSizeMode.Zoom;
+            try
+            {
+                pbxDestinationPicture.Load(controller.getURL());
+            }
+            catch
+            {
+
+            }
+
+
 
         }
     }

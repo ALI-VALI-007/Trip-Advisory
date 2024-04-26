@@ -102,5 +102,12 @@ namespace Lab5
         {
             return this.curDestinaton.getCost();
         }
+        public DataTable filterDVG(string price, string destination, string activities)
+        {
+            DataTable dt = new DataTable();
+            double x = checkIfFloat(price);
+            dt = curDestinaton.filterDestination(x,destination, activities);
+            return dt;
+        }
     }
 }

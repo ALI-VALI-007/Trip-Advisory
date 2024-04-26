@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
 using System.Net.Mime;
+using System.Windows.Forms;
 /*using Microsoft.Office.Interop.Excel;
 using _excel = Microsoft.Office.Interop.Excel;*/
 
@@ -38,7 +39,8 @@ namespace Lab5
             if (tripID != -1)
             {
                 this.curTrip.loadTrip(tripID);
-                if( string.IsNullOrEmpty(this.curTrip.getDateMade()) )
+                string test =this.curTrip.getDestination();
+                if ( !string.IsNullOrEmpty(test) )
                 {
                     return true;
                 }
@@ -60,8 +62,9 @@ namespace Lab5
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
             int tripIdInt = checkIfInt(idNumber);
             double additionalCostFloat = checkIfFloat(additionalCost);
-            if ( additionalCostFloat == -1.0 || tripIdInt == -1 || !validTripLoad(idNumber) || !destinationCheck(destination)==false )
+            if ( additionalCostFloat == -1.0 || tripIdInt == -1 || !validTripLoad(idNumber) || !destinationCheck(destination) )
             {
+                //MessageBox.Show(tripIdInt.ToString());
                 return false;
             }
             curTrip.setIdNumber(tripIdInt);
@@ -99,10 +102,11 @@ namespace Lab5
         }
         private bool destinationCheck(string destinationName)
         {
-            Destination destination = null;
-            destination.loadDestination(destinationName);
-            string location = destination.getLocation();
-            if ( string.IsNullOrEmpty(location) )
+            destinationController dc = new destinationController();
+            bool loaded=dc.validDestinationLoad(destinationName);
+            //string location = curDestination.getLocation();
+            //MessageBox.Show(location);
+            if (loaded)
             {
                 return false;
             }
@@ -148,10 +152,10 @@ namespace Lab5
             List<string> list = new List<string>();
             foreach(int x in ids)
             {
-                
-                list.Add(x.ToString());
+                string xStr = x.ToString();
+                list.Add(xStr);
+                //MessageBox.Show(xStr);
             }
-
             return list;
         }
         public List<string> getAll(string nameSearch)

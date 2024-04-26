@@ -69,6 +69,10 @@
             this.destinationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lab5DBDataSet = new Lab5.lab5DBDataSet();
             this.destinationsTableAdapter = new Lab5.lab5DBDataSetTableAdapters.destinationsTableAdapter();
+            this.lblPriceFilter = new System.Windows.Forms.Label();
+            this.txtPriceFilter = new System.Windows.Forms.TextBox();
+            this.clbFilterActivities = new System.Windows.Forms.CheckedListBox();
+            this.lblActivities = new System.Windows.Forms.Label();
             this.pnlCreateDestination.SuspendLayout();
             this.pnlModify.SuspendLayout();
             this.pnlSearch.SuspendLayout();
@@ -366,18 +370,22 @@
             // 
             // pnlSearch
             // 
+            this.pnlSearch.Controls.Add(this.lblActivities);
+            this.pnlSearch.Controls.Add(this.clbFilterActivities);
+            this.pnlSearch.Controls.Add(this.txtPriceFilter);
+            this.pnlSearch.Controls.Add(this.lblPriceFilter);
             this.pnlSearch.Controls.Add(this.pbxDestinationPicture);
             this.pnlSearch.Controls.Add(this.lblSearchDestination);
             this.pnlSearch.Controls.Add(this.cbxSearchDestination);
             this.pnlSearch.Controls.Add(this.dgvSearchDestination);
-            this.pnlSearch.Location = new System.Drawing.Point(119, 87);
+            this.pnlSearch.Location = new System.Drawing.Point(131, 73);
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(562, 342);
             this.pnlSearch.TabIndex = 16;
             // 
             // pbxDestinationPicture
             // 
-            this.pbxDestinationPicture.Location = new System.Drawing.Point(377, 189);
+            this.pbxDestinationPicture.Location = new System.Drawing.Point(382, 192);
             this.pbxDestinationPicture.Name = "pbxDestinationPicture";
             this.pbxDestinationPicture.Size = new System.Drawing.Size(182, 150);
             this.pbxDestinationPicture.TabIndex = 20;
@@ -387,7 +395,7 @@
             // lblSearchDestination
             // 
             this.lblSearchDestination.AutoSize = true;
-            this.lblSearchDestination.Location = new System.Drawing.Point(181, 13);
+            this.lblSearchDestination.Location = new System.Drawing.Point(26, 20);
             this.lblSearchDestination.Name = "lblSearchDestination";
             this.lblSearchDestination.Size = new System.Drawing.Size(77, 16);
             this.lblSearchDestination.TabIndex = 19;
@@ -396,7 +404,7 @@
             // cbxSearchDestination
             // 
             this.cbxSearchDestination.FormattingEnabled = true;
-            this.cbxSearchDestination.Location = new System.Drawing.Point(171, 32);
+            this.cbxSearchDestination.Location = new System.Drawing.Point(16, 39);
             this.cbxSearchDestination.Name = "cbxSearchDestination";
             this.cbxSearchDestination.Size = new System.Drawing.Size(186, 24);
             this.cbxSearchDestination.TabIndex = 18;
@@ -411,7 +419,7 @@
             this.locationDataGridViewTextBoxColumn,
             this.costDataGridViewTextBoxColumn});
             this.dgvSearchDestination.DataSource = this.destinationsBindingSource;
-            this.dgvSearchDestination.Location = new System.Drawing.Point(3, 62);
+            this.dgvSearchDestination.Location = new System.Drawing.Point(-3, 148);
             this.dgvSearchDestination.Name = "dgvSearchDestination";
             this.dgvSearchDestination.RowHeadersWidth = 51;
             this.dgvSearchDestination.RowTemplate.Height = 24;
@@ -456,6 +464,47 @@
             // destinationsTableAdapter
             // 
             this.destinationsTableAdapter.ClearBeforeFill = true;
+            // 
+            // lblPriceFilter
+            // 
+            this.lblPriceFilter.AutoSize = true;
+            this.lblPriceFilter.Location = new System.Drawing.Point(228, 20);
+            this.lblPriceFilter.Name = "lblPriceFilter";
+            this.lblPriceFilter.Size = new System.Drawing.Size(41, 16);
+            this.lblPriceFilter.TabIndex = 22;
+            this.lblPriceFilter.Text = "Price:";
+            // 
+            // txtPriceFilter
+            // 
+            this.txtPriceFilter.Location = new System.Drawing.Point(231, 41);
+            this.txtPriceFilter.Name = "txtPriceFilter";
+            this.txtPriceFilter.Size = new System.Drawing.Size(100, 22);
+            this.txtPriceFilter.TabIndex = 23;
+            this.txtPriceFilter.TextChanged += new System.EventHandler(this.txtPriceFilter_TextChanged);
+            // 
+            // clbFilterActivities
+            // 
+            this.clbFilterActivities.FormattingEnabled = true;
+            this.clbFilterActivities.Items.AddRange(new object[] {
+            "Water sports",
+            "Snow boarding/Ski",
+            "Sand surfing",
+            "Hiking",
+            "Sightseeing"});
+            this.clbFilterActivities.Location = new System.Drawing.Point(368, 39);
+            this.clbFilterActivities.Name = "clbFilterActivities";
+            this.clbFilterActivities.Size = new System.Drawing.Size(172, 89);
+            this.clbFilterActivities.TabIndex = 24;
+            this.clbFilterActivities.SelectedIndexChanged += new System.EventHandler(this.clbFilterActivities_SelectedIndexChanged);
+            // 
+            // lblActivities
+            // 
+            this.lblActivities.AutoSize = true;
+            this.lblActivities.Location = new System.Drawing.Point(368, 20);
+            this.lblActivities.Name = "lblActivities";
+            this.lblActivities.Size = new System.Drawing.Size(63, 16);
+            this.lblActivities.TabIndex = 25;
+            this.lblActivities.Text = "Activities:";
             // 
             // frmDestination
             // 
@@ -528,5 +577,9 @@
         private System.Windows.Forms.CheckedListBox cblCreateAttractions;
         private System.Windows.Forms.CheckedListBox cblModifyAttractions;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label lblPriceFilter;
+        private System.Windows.Forms.TextBox txtPriceFilter;
+        private System.Windows.Forms.Label lblActivities;
+        private System.Windows.Forms.CheckedListBox clbFilterActivities;
     }
 }

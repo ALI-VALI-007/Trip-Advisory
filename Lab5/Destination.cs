@@ -6,6 +6,7 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 /*
 Models:
 Traveler(name,contactDetails,preferences) DONE
@@ -223,7 +224,7 @@ namespace Lab5
         {
             return (double)value;
         }
-        public List<Destination> filterDestination(double priceFilter, string destinationFilter, string attractionsFilter)
+        public DataTable filterDestination(double priceFilter, string destinationFilter, string attractionsFilter)
         {
             List<Destination> list = new List<Destination>();
             string query = "SELECT * " +
@@ -238,7 +239,7 @@ namespace Lab5
             }
             if (priceFilterExists)
             {
-                whereQuery.Add("[cost] = @priceFilter");
+                whereQuery.Add("[cost] < @priceFilter");
             }
             if (attractionsFilterExists)
             {
@@ -246,33 +247,42 @@ namespace Lab5
             }
             if (destinationFilterExists)
             {
-                whereQuery.Add("[destinationFilter] = @destinationFilter");
+                whereQuery.Add("[destinationName] = @destinationFilter");
             }
-            string finishedWhereQuery = string.Join("&", whereQuery);
-            if( string.IsNullOrEmpty(finishedWhereQuery) )
+            string finishedWhereQuery = string.Join(" AND ", whereQuery);
+            if( !string.IsNullOrEmpty(finishedWhereQuery) )
             {
                 query += finishedWhereQuery;
+            //    MessageBox.Show(query);
             }
+
 
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
-            OleDbDataReader reader = cmd.ExecuteReader();
-            foreach (var row in reader)
-            {
-                this.destinationName = reader.GetString(reader.GetOrdinal("destinationName"));
-                this.location = reader.GetString(reader.GetOrdinal("location"));
-                this.cost = convertToDouble(reader.GetDecimal(reader.GetOrdinal("cost")));
-                this.URL = reader.GetString(reader.GetOrdinal("URL"));
-                this.attractions = reader.GetString(reader.GetOrdinal("attractions"));
 
-                Destination newDestination = new Destination(destinationName, location, cost, URL, attractions);
-                list.Add(newDestination);
+            if (priceFilterExists)
+            {
+                cmd.Parameters.AddWithValue("@priceFilter", priceFilter);
             }
+            if (attractionsFilterExists)
+            {
+                cmd.Parameters.AddWithValue("@attractionsFilter", attractionsFilter);
+            }
+            if (destinationFilterExists)
+            {
+                cmd.Parameters.AddWithValue("@destinationFilter", destinationFilter);
+            }
+
+
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
             reader.Close();
             myConnection.Close();
-            return list;
+            return dt;
         }
 
     }

@@ -278,9 +278,9 @@ namespace Lab5
             System.Windows.Forms.ComboBox cbxId = new System.Windows.Forms.ComboBox();
             cbxId.Location = new Point(200, 225);
             tripController tc = new tripController();
-            foreach (string curName in tc.findIdUser(curUsername))
+            foreach (string curId in tc.findIdUser(curUsername))
             {
-                cbxDestination.Items.Add(curName);
+                cbxId.Items.Add(curId);
             }
             pnlModify.Controls.Add(cbxId);
 
@@ -350,6 +350,10 @@ namespace Lab5
                 {
                     controllerT.sendEmail(curUsername);
                     MessageBox.Show("Trip modified, check your email!");
+                }
+                else
+                {
+                    MessageBox.Show("Trip not modified");
                 }
             }
             else

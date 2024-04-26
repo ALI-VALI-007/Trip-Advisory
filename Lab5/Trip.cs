@@ -64,7 +64,7 @@ namespace Lab5
         }
         public string getDestination() 
         {
-            return destination; 
+            return this.destination; 
         }
         public string getString()
         {
@@ -110,7 +110,7 @@ namespace Lab5
             this.idNumber = nameSearch;
             string query = "SELECT * " +
               "FROM trips " +
-            "WHERE [id] = @id";
+            "WHERE [idNumber] = @idNumber";
 
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
@@ -124,7 +124,7 @@ namespace Lab5
                 this.activities = reader.GetString(reader.GetOrdinal("activities"));
                 this.accomedations = reader.GetString(reader.GetOrdinal("accomedations"));
                 this.destination = reader.GetString(reader.GetOrdinal("destination"));
-                this.additionalCost = reader.GetFloat(reader.GetOrdinal("additionalCost"));
+                this.additionalCost = convertToDouble(reader.GetDecimal(reader.GetOrdinal("additionalCost")));
                 this.tName = reader.GetString(reader.GetOrdinal("tName"));
                 this.status = reader.GetString(reader.GetOrdinal("status"));
                 this.careTaker = reader.GetString(reader.GetOrdinal("careTaker"));
@@ -172,8 +172,9 @@ namespace Lab5
             cmd.Parameters.AddWithValue("@tName", this.tName);
             cmd.Parameters.AddWithValue("@status", this.status);
             cmd.Parameters.AddWithValue("@careTaker", this.careTaker);
-            cmd.Parameters.AddWithValue("@idNumber", this.idNumber);
             cmd.Parameters.AddWithValue("@dateOver", this.dateOver);
+            cmd.Parameters.AddWithValue("@idNumber", this.idNumber);
+
             //execute
             cmd.ExecuteNonQuery();
             myConnection.Close();
@@ -253,6 +254,7 @@ namespace Lab5
             {
                 int idCount = reader.GetInt32(reader.GetOrdinal("idNumber"));
                 result.Add(idCount);
+                //MessageBox.Show(idCount.ToString());
             }
             reader.Close();
             return result;

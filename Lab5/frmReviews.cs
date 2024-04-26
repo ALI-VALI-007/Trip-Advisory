@@ -49,7 +49,14 @@ namespace Lab5
             destinationController destinationController = new destinationController();
             destinationController.validDestinationLoad(destName);
             pbxReview.SizeMode = PictureBoxSizeMode.Zoom;
-            pbxReview.Load(destinationController.getURL());
+            try
+            {
+                pbxReview.Load(destinationController.getURL());
+            }
+            catch
+            {
+
+            }
         }
 
         private void btnCreate_Click(object sender, EventArgs e)

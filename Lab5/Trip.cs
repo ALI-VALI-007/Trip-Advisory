@@ -5,6 +5,7 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 /*
 Models:
@@ -271,20 +272,27 @@ namespace Lab5
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+                this.idNumber = reader.GetInt32(reader.GetOrdinal("idNumber"));
                 this.dateMade = reader.GetString(reader.GetOrdinal("dateMade"));
                 this.activities = reader.GetString(reader.GetOrdinal("activities"));
                 this.accomedations = reader.GetString(reader.GetOrdinal("accomedations"));
                 this.destination = reader.GetString(reader.GetOrdinal("destination"));
-                this.additionalCost = reader.GetFloat(reader.GetOrdinal("additionalCost"));
+                this.additionalCost = convertToDouble( reader.GetDecimal(reader.GetOrdinal("additionalCost")) );//eror
                 this.tName = reader.GetString(reader.GetOrdinal("tName"));
                 this.status = reader.GetString(reader.GetOrdinal("status"));
                 this.careTaker = reader.GetString(reader.GetOrdinal("careTaker"));
                 this.dateOver = reader.GetString(reader.GetOrdinal("dateOver"));
-                results.Add(this.ToString());
+                //string x = this.getString()
+                results.Add(this.getString());
+                //MessageBox(x);
             }
             reader.Close();
             myConnection.Close();
             return results;
+        }
+        private double convertToDouble(decimal value)
+        {
+            return (double)value;
         }
     }
 }

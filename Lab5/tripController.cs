@@ -148,6 +148,7 @@ namespace Lab5
             List<string> list = new List<string>();
             foreach(int x in ids)
             {
+                
                 list.Add(x.ToString());
             }
 

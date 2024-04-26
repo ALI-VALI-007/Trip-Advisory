@@ -91,13 +91,21 @@ namespace Lab5
 
             foreach (string data in entries)
             {
+                //MessageBox.Show(data);
                 System.Windows.Forms.Label info = new System.Windows.Forms.Label();
                 info.Text = data;
                 info.AutoSize = true;
 
                 PictureBox dPicture = new PictureBox();
-                dPicture.Load(URL);
                 dPicture.SizeMode = PictureBoxSizeMode.AutoSize;
+                try
+                {
+                    dPicture.Load(URL);
+                }
+                catch
+                {
+
+                }
                 flpTrips.Controls.Add(info);
                 flpTrips.Controls.Add(dPicture);
             }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -162,7 +163,14 @@ namespace Lab5
 
             controller.validDestinationLoad(destName);
             pbxDestinationPicture.SizeMode = PictureBoxSizeMode.Zoom;
-            pbxDestinationPicture.Load(controller.getURL());
+            try
+            {
+                pbxDestinationPicture.Load(controller.getURL());
+            }
+            catch
+            {
+
+            }
         }
 
         private void dgvSearchDestination_CellContentClick(object sender, DataGridViewCellEventArgs e)

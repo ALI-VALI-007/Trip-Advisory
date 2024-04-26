@@ -118,7 +118,12 @@ namespace Lab5
             travelerController controller = new travelerController();
             controller.validTravelerLoad(username);
             controller.getEmail();
-            string content = "Thank you for booking the trip. Your total is: " +this.curTrip.getCost();
+            destinationController dt = new destinationController();
+            string destination = curTrip.getDestination();
+            dt.validDestinationLoad(destination);
+       
+            double finalPrice = this.curTrip.getCost() + dt.getPrice();
+            string content = "Thank you for booking the trip. Your total is: $" + finalPrice;
             var smtpClient = new SmtpClient("smtp.gmail.com", 587);
             smtpClient.Credentials = new NetworkCredential("componentdesignemail@gmail.com", "elue smxq alop ykbi");//feel free to use this email
             smtpClient.EnableSsl = true;
@@ -135,5 +140,22 @@ namespace Lab5
         {
             var excelApp = new excel.Application;
         }*/
+        public List<string> findIdUser(string name) //Its gonna check if txtbx valid, then try to load it.if it can then we can delete it
+        {
+            List<int> ids = new List<int>();
+
+            ids = curTrip.findIdUser(name);
+            List<string> list = new List<string>();
+            foreach(int x in ids)
+            {
+                list.Add(x.ToString());
+            }
+
+            return list;
+        }
+        public List<string> getAll(string nameSearch)
+        {
+            return curTrip.loadAllTrips(nameSearch);
+        }
     }
 }

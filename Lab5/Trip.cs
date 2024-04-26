@@ -61,9 +61,13 @@ namespace Lab5
             this.careTaker = careTaker;
             this.dateOver = dateOver;
         }
+        public string getDestination() 
+        {
+            return destination; 
+        }
         public string getString()
         {
-            return this.tName + ","+ this.dateMade +","+ this.dateOver + ","+ this.activities +","+ this.accomedations +","+ this.destination +","+ this.additionalCost.ToString();
+            return this.idNumber + ": "+ this.tName + ","+ this.dateMade +","+ this.dateOver + ","+ this.activities +","+ this.accomedations +","+ this.destination +","+ this.additionalCost.ToString();
         }
         public double getCost()
         {
@@ -105,13 +109,13 @@ namespace Lab5
             this.idNumber = nameSearch;
             string query = "SELECT * " +
               "FROM trips " +
-            "WHERE [tName] = @tName";
+            "WHERE [id] = @id";
 
             myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
             myConnection.Open();
             OleDbCommand cmd = new OleDbCommand(query, myConnection);
 
-            cmd.Parameters.AddWithValue("@tName", nameSearch);
+            cmd.Parameters.AddWithValue("@idNumber", nameSearch);
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -233,6 +237,54 @@ namespace Lab5
         public void setDateOver(string dateOver)
         {
             this.dateOver = dateOver;
+        }
+        public List<int> findIdUser(string name)
+        {
+            List<int> result= new List<int>();
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection.Open();
+
+            string query = "SELECT * FROM trips WHERE [tName] = @tName ;";
+            OleDbCommand cmd = new OleDbCommand(query, myConnection);
+            cmd.Parameters.AddWithValue("@tName", name);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            foreach (var row in reader)
+            {
+                int idCount = reader.GetInt32(reader.GetOrdinal("idNumber"));
+                result.Add(idCount);
+            }
+            reader.Close();
+            return result;
+        }
+        public List<string> loadAllTrips(string nameSearch)
+        {
+            List<string> results = new List<string>();
+            string query = "SELECT * " +
+              "FROM trips " +
+            "WHERE [tName] = @tName";
+
+            myConnection = new OleDbConnection("provider=Microsoft.ACE.OLEDB.12.0;Data Source=lab5DB.accdb;");
+            myConnection.Open();
+            OleDbCommand cmd = new OleDbCommand(query, myConnection);
+
+            cmd.Parameters.AddWithValue("@tName", nameSearch);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                this.dateMade = reader.GetString(reader.GetOrdinal("dateMade"));
+                this.activities = reader.GetString(reader.GetOrdinal("activities"));
+                this.accomedations = reader.GetString(reader.GetOrdinal("accomedations"));
+                this.destination = reader.GetString(reader.GetOrdinal("destination"));
+                this.additionalCost = reader.GetFloat(reader.GetOrdinal("additionalCost"));
+                this.tName = reader.GetString(reader.GetOrdinal("tName"));
+                this.status = reader.GetString(reader.GetOrdinal("status"));
+                this.careTaker = reader.GetString(reader.GetOrdinal("careTaker"));
+                this.dateOver = reader.GetString(reader.GetOrdinal("dateOver"));
+                results.Add(this.ToString());
+            }
+            reader.Close();
+            myConnection.Close();
+            return results;
         }
     }
 }

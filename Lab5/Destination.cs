@@ -50,6 +50,10 @@ namespace Lab5
             this.URL = URL;
             this.attractions = attractions;
         }
+        public double getCost()
+        {
+            return cost;
+        }
         public string getName()
         {
             return this.destinationName;

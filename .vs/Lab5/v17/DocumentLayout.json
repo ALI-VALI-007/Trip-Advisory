@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|c:\\users\\12674\\lab5\\lab5\\frmtrip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|solutionrelative:lab5\\frmtrip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|c:\\users\\12674\\lab5\\lab5\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{52AD200D-E1B0-41B5-BB1B-DC16F4AE05A8}|Lab5\\Lab5.csproj|solutionrelative:lab5\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,24 +14,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "tripController.cs",
-              "DocumentMoniker": "C:\\Users\\12674\\lab5\\Lab5\\tripController.cs",
-              "RelativeDocumentMoniker": "Lab5\\tripController.cs",
-              "ToolTip": "C:\\Users\\12674\\lab5\\Lab5\\tripController.cs",
-              "RelativeToolTip": "Lab5\\tripController.cs",
-              "ViewState": "AQIAAHAAAAAAAAAAAAAuwHMAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T10:40:36.565Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -45,7 +28,7 @@
               "RelativeDocumentMoniker": "Lab5\\frmTrip.cs",
               "ToolTip": "C:\\Users\\12674\\lab5\\Lab5\\frmTrip.cs",
               "RelativeToolTip": "Lab5\\frmTrip.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAUwDkAAAA1AAAA",
+              "ViewState": "AQIAAPYAAAAAAAAAAAAqwAABAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-26T10:40:20.588Z",
               "EditorCaption": ""

@@ -57,7 +57,7 @@ namespace Lab5
         private void btnTest_Click(object sender, EventArgs e)
         {
             tripController controller = new tripController();
-            controller.sendEmail("works", "");
+            controller.sendEmail("works");
         }
 
         private void button1_Click_1(object sender, EventArgs e)

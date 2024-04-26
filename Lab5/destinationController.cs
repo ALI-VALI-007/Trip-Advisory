@@ -98,5 +98,9 @@ namespace Lab5
         {
             return this.curDestinaton.getAttractions();
         }
+        public double getPrice()
+        {
+            return this.curDestinaton.getCost();
+        }
     }
 }

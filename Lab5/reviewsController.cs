@@ -17,6 +17,12 @@ namespace Lab5
         }
         public bool validReviewSave(string travelerName, string ratingStr, string comments, string dName)
         {
+            bool paramCheck = strCheck(travelerName, ratingStr, comments, dName);
+            if (!paramCheck)
+            {
+                return false;
+            }
+
             int ratingInt = checkIfInt(ratingStr);
 
             if ( (travelerCheck(travelerName) == false) || ratingInt==-1 )
@@ -66,13 +72,20 @@ namespace Lab5
         }
         public bool validReviewUpdate(string id,string travelerName, string ratingStr, string comments, string dName)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
+            bool paramCheck = strCheck(travelerName, ratingStr, comments, dName);
+            if (!paramCheck)
+            {
+                return false;
+            }
+
+
             int ratingInt= checkIfInt(ratingStr);
             int idInt = checkIfInt(id);
             if (travelerCheck(travelerName)==false && ratingInt!=0)
             {
                 return false;
             }
-            Traveler curTraveler = null;
+            Traveler curTraveler = new Traveler("","","","");
             curTraveler.loadTraveler(travelerName);
             curReview.setRating(ratingInt);
             curReview.setDName(dName);
@@ -122,6 +135,14 @@ namespace Lab5
             DataTable dt = new DataTable();
             dt = curReview.loadDGV(destinationName);
             return dt;
+        }
+        private bool strCheck(string x, string y, string z, string a)
+        {
+            if (string.IsNullOrEmpty(x) || string.IsNullOrEmpty(y) || string.IsNullOrEmpty(z) || string.IsNullOrEmpty(a))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

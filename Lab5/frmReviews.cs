@@ -65,7 +65,15 @@ namespace Lab5
             string destination = cbxCreateDestination.Text;
             string rating = txtCreateRating.Text;
             string comments = txtCreateComments.Text;
-            controller.validReviewSave(curUsername,rating,comments,destination);
+            bool status = controller.validReviewSave(curUsername,rating,comments,destination);
+            if (status)
+            {
+                MessageBox.Show("Created");
+            }
+            else
+            {
+                MessageBox.Show("Not created");
+            }
         }
 
         private void btnModify_Click(object sender, EventArgs e)
@@ -80,11 +88,11 @@ namespace Lab5
 
             if (status)
             {
-                MessageBox.Show("Deleted");
+                MessageBox.Show("Modified");
             }
             else
             {
-                MessageBox.Show("Not deleted");
+                MessageBox.Show("Not Modified");
             }
         }
 

@@ -146,8 +146,9 @@ namespace Lab5
             cmd.Parameters.AddWithValue("@cost", this.cost);
             cmd.Parameters.AddWithValue("@location", this.location);
             cmd.Parameters.AddWithValue("@URL", this.URL);
-            cmd.Parameters.AddWithValue("@destinationName", this.destinationName);
             cmd.Parameters.AddWithValue("@attractions", this.attractions);
+            cmd.Parameters.AddWithValue("@destinationName", this.destinationName);
+
 
             //execute
             cmd.ExecuteNonQuery();

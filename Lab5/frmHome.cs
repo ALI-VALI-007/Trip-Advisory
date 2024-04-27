@@ -29,7 +29,18 @@ namespace Lab5
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(curUsername))
+            {
+                btnDestinationPage.Enabled = false;
+                btnReview.Enabled = false;
+                btnTrip.Enabled = false;
+            }
+            else
+            {
+                btnDestinationPage.Enabled = true;
+                btnReview.Enabled = true;
+                btnTrip.Enabled = true;
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {

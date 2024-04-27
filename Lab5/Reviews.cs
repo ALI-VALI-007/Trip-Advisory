@@ -167,7 +167,7 @@ namespace Lab5
             String query = "UPDATE reviews SET " +
               "[rating] = @rating, " +
               "[comments] = @comments, " +
-              "[travelerName] = @travelerName " +
+              "[travelerName] = @travelerName, " +
               "[dName] = @dName " +
               "WHERE [id] = @id";
             OleDbCommand cmd = new OleDbCommand(query, myConnection);

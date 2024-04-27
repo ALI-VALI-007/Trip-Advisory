@@ -21,6 +21,11 @@ namespace Lab5
         }
         public bool validTripSave(string dateMade, string activities, string accomendations, string destination, string additionalCost, string tName, string status, string careTaker, string dateOver)
         {
+            bool paramCheck = strCheck(dateMade, activities, accomendations, destination, additionalCost, tName, status, careTaker, dateOver);
+            if (!paramCheck)
+            {
+                return false;
+            }
             double additionalCostFloat = checkIfFloat(additionalCost);
 
             if (additionalCostFloat == -1.0 )
@@ -60,6 +65,12 @@ namespace Lab5
         }
         public bool validTripUpdate(string idNumber, string dateMade, string activities, string accomendations, string destination, string additionalCost, string tName, string status, string careTaker, string dateOver)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
+            bool paramCheck = strCheck(dateMade,activities,accomendations,destination,additionalCost,tName,status,careTaker,dateOver);
+            if (!paramCheck)
+            {
+                return false;
+            }
+
             int tripIdInt = checkIfInt(idNumber);
             double additionalCostFloat = checkIfFloat(additionalCost);
             if ( additionalCostFloat == -1.0 || tripIdInt == -1 || !validTripLoad(idNumber) || !destinationCheck(destination) )
@@ -121,7 +132,6 @@ namespace Lab5
         {
             travelerController controller = new travelerController();
             controller.validTravelerLoad(username);
-            controller.getEmail();
             destinationController dt = new destinationController();
             string destination = curTrip.getDestination();
             dt.validDestinationLoad(destination);
@@ -133,7 +143,8 @@ namespace Lab5
             smtpClient.EnableSsl = true;
 
             // from, to, subject, content
-            var message = new MailMessage("componentdesignemail@gmail.com", "alisvali007@gmail.com", "Lab 5: Reciept", content);
+            string clientEmail = controller.getEmail();
+            var message = new MailMessage("componentdesignemail@gmail.com", clientEmail, "Lab 5: Reciept", content);
 
             //var attachment = new Attachment("reciept.xlsx", MediaTypeNames.Application.Octet);
             //message.Attachments.Add(attachment);
@@ -161,6 +172,18 @@ namespace Lab5
         public List<string> getAll(string nameSearch)
         {
             return curTrip.loadAllTrips(nameSearch);
+        }
+        private bool strCheck(string x, string y, string z, string a, string b, string c, string d, string e, string f)
+        {
+            if (string.IsNullOrEmpty(x) || string.IsNullOrEmpty(y) || string.IsNullOrEmpty(z) || string.IsNullOrEmpty(a))
+            {
+                return false;
+            }
+            if(string.IsNullOrEmpty(b) || string.IsNullOrEmpty(c) || string.IsNullOrEmpty(d) || string.IsNullOrEmpty (e) || string.IsNullOrEmpty(f))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

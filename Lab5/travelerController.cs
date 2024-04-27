@@ -16,6 +16,10 @@ namespace Lab5
         }
         public bool validTravelerSave(string nameTraveler, string contactDetails, string preferences, string password)
         {
+            if (!strCheck(password, preferences, nameTraveler, contactDetails))
+            {
+                return false;
+            }
             if (validTravelerLoad(nameTraveler) || checkIfInt(password)!=-1 )
             {
                 //MessageBox.Show(checkIfInt(password).ToString());
@@ -49,6 +53,10 @@ namespace Lab5
         }
         public bool validTravelerUpdate(string nameTraveler, string contactDetails, string preferences, string password)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
+            if (!strCheck(password, preferences, nameTraveler, contactDetails))
+            {
+                return false;
+            }
             if ( !validTravelerLoad(nameTraveler) || checkIfInt(password) != -1)
             {
                 return false;
@@ -105,6 +113,14 @@ namespace Lab5
         public string getEmail()
         {
             return this.curTraveler.getEmail();
+        }
+        private bool strCheck(string x,string y, string z, string a) 
+        {
+            if (string.IsNullOrEmpty(x) || string.IsNullOrEmpty(y) || string.IsNullOrEmpty(z) || string.IsNullOrEmpty(a))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

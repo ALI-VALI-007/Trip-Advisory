@@ -16,9 +16,16 @@ namespace Lab5
         {//you can add stuff, i wouldnt
             curDestinaton = new Destination("","",-1.0,"","");
         }
-        public bool validDestinationSave(string destinationName, string location, string cost, string URL, string attractions) { 
+        public bool validDestinationSave(string destinationName, string location, string cost, string URL, string attractions) {
+            bool paramCheck = strCheck(destinationName, location, cost, URL, attractions);
+            if (!paramCheck)
+            {
+                return false;
+            }
+
+
             double costFloat = checkIfFloat(cost);
-            if (costFloat == -1.0 || !validDestinationLoad(destinationName))
+            if (costFloat == -1.0 || validDestinationLoad(destinationName))
             {
                 return false;
             }
@@ -48,6 +55,13 @@ namespace Lab5
         }
         public bool validDestinationUpdate(string destinationName, string location, string cost, string URL, string attractions)
         {//Its gonna check if txtbx valid, then try to load it.if it can then we can update its
+            bool paramCheck = strCheck(destinationName,location,cost,URL,attractions);
+            if (!paramCheck)
+            {
+                return false;
+            }
+
+
             double costFloat = checkIfFloat(cost);
             if (costFloat == -1.0 || !validDestinationLoad(destinationName))
             {
@@ -108,6 +122,18 @@ namespace Lab5
             double x = checkIfFloat(price);
             dt = curDestinaton.filterDestination(x,destination, activities);
             return dt;
+        }
+        private bool strCheck(string x, string y, string z, string a, string b)
+        {
+            if (string.IsNullOrEmpty(x) || string.IsNullOrEmpty(y) || string.IsNullOrEmpty(z) || string.IsNullOrEmpty(a))
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(b))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
